@@ -3,8 +3,8 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.gwarant-service.pl/product/soft-ui-dashboard-react
-* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
+* Product Page: https://www.Ambro-Dev.pl/product/soft-ui-dashboard-react
+* Copyright 2022 Ambro-Dev (https://www.Ambro-Dev.pl)
 
 Coded by Ambro-Dev
 
@@ -58,14 +58,14 @@ function SidenavCard() {
           </SoftBox>
           <SoftButton
             component={Link}
-            href="https://www.mans.org.pl/"
+            href="https://www.ambro.dev/"
             target="_blank"
             rel="noreferrer"
             size="small"
             color="white"
             fullWidth
           >
-            MANS
+            Ambro-Dev
           </SoftButton>
         </SoftBox>
       </CardContent>

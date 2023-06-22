@@ -4,8 +4,8 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.gwarant-service.pl/product/soft-ui-dashboard-react
-* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
+* Product Page: https://www.Ambro-Dev.pl/product/soft-ui-dashboard-react
+* Copyright 2022 Ambro-Dev (https://www.Ambro-Dev.pl)
 
 Coded by Ambro-Dev
 
@@ -120,74 +120,74 @@ function Overview() {
     getConversations();
   }, [auth.userId]);
 
-    return (
-      <DashboardLayout>
-        <Header stage={0} />
-        <SoftBox mt={5} mb={3}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6} xl={4}>
-              <ProfileInfoCard
-                title="profile information"
-                info={{
-                  fullName: `${auth.name} ${auth.surname}`,
-                  email: `${auth.email}`,
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} xl={4}>
-              {conversationList && conversationList.length > 0 ? (
-                <ProfilesList title="conversations" profiles={conversationList} shadow={false} />
-              ) : (
-                <SoftBox>No conversations</SoftBox>
-              )}
-            </Grid>
+  return (
+    <DashboardLayout>
+      <Header stage={0} />
+      <SoftBox mt={5} mb={3}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={6} xl={4}>
+            <ProfileInfoCard
+              title="profile information"
+              info={{
+                fullName: `${auth.name} ${auth.surname}`,
+                email: `${auth.email}`,
+              }}
+            />
           </Grid>
-        </SoftBox>
-        <SoftBox mb={3}>
-          <Card>
-            <SoftBox pt={2} px={2}>
-              <SoftBox mb={0.5}>
-                <SoftTypography variant="h6" fontWeight="medium">
-                  Courses
-                </SoftTypography>
-              </SoftBox>
-              <SoftBox mb={1}>
-                <SoftTypography variant="button" fontWeight="regular" color="text">
-                  All my Courses
-                </SoftTypography>
-              </SoftBox>
+          <Grid item xs={12} xl={4}>
+            {conversationList && conversationList.length > 0 ? (
+              <ProfilesList title="conversations" profiles={conversationList} shadow={false} />
+            ) : (
+              <SoftBox>No conversations</SoftBox>
+            )}
+          </Grid>
+        </Grid>
+      </SoftBox>
+      <SoftBox mb={3}>
+        <Card>
+          <SoftBox pt={2} px={2}>
+            <SoftBox mb={0.5}>
+              <SoftTypography variant="h6" fontWeight="medium">
+                Courses
+              </SoftTypography>
             </SoftBox>
-            <SoftBox p={2}>
-              {courses.length > 0 ? (
-                <Grid container spacing={3}>
-                  {courses.map((course) => (
-                    <Grid item xs={12} md={6} xl={3}>
-                      <DefaultProjectCard
-                        image={`${serverUrl}/${course.pic}`}
-                        title={`${course.name}`}
-                        description={`${course.teacherId.name} ${course.teacherId.surname}`}
-                        action={{
-                          type: "internal",
-                          route: `/courses/course-info/${course._id}`,
-                          color: "info",
-                          label: "go to course",
-                        }}
-                      />
-                    </Grid>
-                  ))}
-                </Grid>
-              ) : (
-                <SoftBox>
-                  <SoftTypography>Loading</SoftTypography>
-                </SoftBox>
-              )}
+            <SoftBox mb={1}>
+              <SoftTypography variant="button" fontWeight="regular" color="text">
+                All my Courses
+              </SoftTypography>
             </SoftBox>
-          </Card>
-        </SoftBox>
+          </SoftBox>
+          <SoftBox p={2}>
+            {courses.length > 0 ? (
+              <Grid container spacing={3}>
+                {courses.map((course) => (
+                  <Grid item xs={12} md={6} xl={3}>
+                    <DefaultProjectCard
+                      image={`${serverUrl}/${course.pic}`}
+                      title={`${course.name}`}
+                      description={`${course.teacherId.name} ${course.teacherId.surname}`}
+                      action={{
+                        type: "internal",
+                        route: `/courses/course-info/${course._id}`,
+                        color: "info",
+                        label: "go to course",
+                      }}
+                    />
+                  </Grid>
+                ))}
+              </Grid>
+            ) : (
+              <SoftBox>
+                <SoftTypography>Loading</SoftTypography>
+              </SoftBox>
+            )}
+          </SoftBox>
+        </Card>
+      </SoftBox>
 
-        <Footer />
-      </DashboardLayout>
-    );
+      <Footer />
+    </DashboardLayout>
+  );
 }
 
 export default Overview;

@@ -2,14 +2,14 @@
   "name": "soft-ui-dashboard-react",
   "version": "1.2.0",
   "author": "Ambro-Dev",
-  "license": "SEE LICENSE IN <https://www.gwarant-service.pl>",
-  "description": "ReactJS version of Soft UI Dashboard by Gwarant-Service",
+  "license": "SEE LICENSE IN <https://www.Ambro-Dev.pl>",
+  "description": "ReactJS version of Soft UI Dashboard by Ambro-Dev",
   "bugs": {
-    "url": "https://www.gwarant-service.pl"
+    "url": "https://www.Ambro-Dev.pl"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/creativetimofficial/soft-ui-dashboard-react.git"
+    "url": "git+https://github.com/Ambro-Dev/soft-frontend.git"
   },
   "engines": {
     "node": "14 || 15 || 16",

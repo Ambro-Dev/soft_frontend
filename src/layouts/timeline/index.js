@@ -26,7 +26,7 @@ export default function VideoCall() {
       apiKey,
 
       containerId: null,
-      redirectOnLeave: "https://mans.org.pl",
+      redirectOnLeave: "https://ambro.dev",
 
       micEnabled: true,
       webcamEnabled: true,
@@ -59,7 +59,7 @@ export default function VideoCall() {
 
       branding: {
         enabled: true,
-        logoURL: "http://localhost:3000/static/media/logo-ct.9b8693ea4783e10fad4b.png",
+        logoURL: "http://localhost:3000/static/media/soft-logo.9b8693ea4783e10fad4b.png",
         name: "Distance Learning",
         poweredBy: false,
       },
@@ -88,8 +88,8 @@ export default function VideoCall() {
         // visible when redirect on leave not provieded
         actionButton: {
           // optional action button
-          label: "MANS", // action button label
-          href: "https://mans.org.pl/", // action button href
+          label: "Ambro-Dev", // action button label
+          href: "https://ambro.dev/", // action button href
         },
       },
 

@@ -3,8 +3,8 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.gwarant-service.pl/product/soft-ui-dashboard-react
-* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
+* Product Page: https://www.Ambro-Dev.pl/product/soft-ui-dashboard-react
+* Copyright 2022 Ambro-Dev (https://www.Ambro-Dev.pl)
 
 Coded by Ambro-Dev
 
@@ -202,7 +202,7 @@ function Configurator() {
           <SoftBox mb={2}>
             <SoftButton
               component={Link}
-              href="https://www.gwarant-service.pl/product/soft-ui-dashboard-react"
+              href="https://www.Ambro-Dev.pl/product/soft-ui-dashboard-react"
               target="_blank"
               rel="noreferrer"
               color="dark"
@@ -214,7 +214,7 @@ function Configurator() {
           </SoftBox>
           <SoftButton
             component={Link}
-            href="https://www.gwarant-service.pl/learning-lab/react/quick-start/soft-ui-dashboard/"
+            href="https://www.Ambro-Dev.pl/learning-lab/react/quick-start/soft-ui-dashboard/"
             target="_blank"
             rel="noreferrer"
             color="dark"
@@ -227,11 +227,11 @@ function Configurator() {
         <SoftBox display="flex" justifyContent="center">
           <a
             className="github-button"
-            href="https://github.com/creativetimofficial/soft-ui-dashboard-react"
+            href="https://github.com/Ambro-Dev/soft_frontend"
             data-icon="octicon-star"
             data-size="large"
             data-show-count="true"
-            aria-label="Star creativetimofficial/soft-ui-dashboard-react on GitHub"
+            aria-label="Star Ambro-Dev/soft_frontend on GitHub"
           >
             Star
           </a>
@@ -245,7 +245,7 @@ function Configurator() {
             <SoftBox mr={1.5}>
               <SoftButton
                 component={Link}
-                href="//twitter.com/intent/tweet?text=Check%20Soft%20UI%20Dashboard%20React%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23react%23mui&url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard-react"
+                href="//twitter.com/intent/tweet?text=Check%20Soft%20UI%20Dashboard%20React%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23react%23mui&url=https%3A%2F%2Fwww.ambro.dev%2Fproduct%2Fsoft-ui-dashboard-react"
                 target="_blank"
                 rel="noreferrer"
                 color="dark"
@@ -256,7 +256,7 @@ function Configurator() {
             </SoftBox>
             <SoftButton
               component={Link}
-              href="https://www.facebook.com/sharer/sharer.php?u=https://www.gwarant-service.pl/product/soft-ui-dashboard-react"
+              href="https://www.facebook.com/sharer/sharer.php?u=https://www.Ambro-Dev.pl/product/soft-ui-dashboard-react"
               target="_blank"
               rel="noreferrer"
               color="dark"

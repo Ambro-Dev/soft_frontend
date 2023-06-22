@@ -3,8 +3,8 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.gwarant-service.pl/product/soft-ui-dashboard-react
-* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
+* Product Page: https://www.Ambro-Dev.pl/product/soft-ui-dashboard-react
+* Copyright 2022 Ambro-Dev (https://www.Ambro-Dev.pl)
 
 Coded by Ambro-Dev
 
@@ -44,7 +44,7 @@ import {
 } from "layouts/virtual-reality/components/BaseLayout/styles";
 
 // Images
-import brand from "assets/images/logo-ct.png";
+import brand from "assets/images/logos/soft-logo.png";
 
 function BaseLayout({ children }) {
   const [controller, dispatch] = useSoftUIController();
