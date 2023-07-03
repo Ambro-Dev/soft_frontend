@@ -3,8 +3,8 @@
 * Soft UD - Demo - v1.0.0
 =========================================================
 
-* Product Page: https://www.gwarant-service.pl/product/soft-ui-dashboard-pro-react
-* Copyright 2021 Gwarant-Service (https://www.gwarant-service.pl)
+* Product Page: https://www.ambro.dev/product/soft-ui-dashboard-pro-react
+* Copyright 2021 Ambro-Dev (https://www.ambro.dev)
 
 Coded by Ambro-Dev
 

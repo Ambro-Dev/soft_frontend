@@ -3,8 +3,8 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.gwarant-service.pl/product/soft-ui-dashboard-react
-* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
+* Product Page: https://www.soft.ambro.dev
+* Copyright 2022 Ambro-Dev (https://www.ambro.dev)
 
 Coded by Ambro-Dev
 
@@ -40,7 +40,7 @@ function IllustrationLayout({ color, header, title, description, illustration, c
         routes={pageRoutes}
         action={{
           type: "external",
-          route: "https://creative-tim.com/product/soft-ui-dashboard-pro-react",
+          route: "https://github.com/Ambro-Dev/soft_frontend.git",
           label: "buy now",
         }}
       />

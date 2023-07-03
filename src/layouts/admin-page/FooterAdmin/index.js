@@ -33,7 +33,7 @@ function FooterAdmin({ light }) {
             color={light ? "white" : "text"}
             fontSize={size.sm}
           >
-            &copy; 2022, made by Gwarant-Service
+            &copy; 2022, made by Ambro-Dev
           </SoftBox>
           <SoftBox
             component="ul"

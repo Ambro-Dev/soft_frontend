@@ -3,8 +3,8 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.gwarant-service.pl/product/soft-ui-dashboard-react
-* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
+* Product Page: https://www.soft.ambro.dev
+* Copyright 2022 Ambro-Dev (https://www.ambro.dev)
 
 Coded by Ambro-Dev
 
@@ -34,8 +34,8 @@ function Footer() {
         <Grid item xs={10} lg={8}>
           <SoftBox display="flex" justifyContent="center" flexWrap="wrap" mb={3}>
             <SoftBox mr={{ xs: 2, lg: 3, xl: 6 }}>
-              <SoftTypography component="a" href="https://gwarant-service.pl" target="_blank" variant="body2" color="secondary">
-                Gwarant-Service
+              <SoftTypography component="a" href="https://ambro.dev" target="_blank" variant="body2" color="secondary">
+                Ambro-Dev
               </SoftTypography>
             </SoftBox>
             <SoftBox mr={{ xs: 2, lg: 3, xl: 6 }}>
@@ -66,7 +66,7 @@ function Footer() {
         </Grid>
         <Grid item xs={12} lg={8} sx={{ textAlign: "center" }}>
           <SoftTypography variant="body2" color="secondary">
-            Copyright &copy; 2022 Soft by Gwarant-Service.
+            Copyright &copy; 2022 Soft by Ambro-Dev.
           </SoftTypography>
         </Grid>
       </Grid>
