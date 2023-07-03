@@ -68,7 +68,7 @@ export default function VideoCallPage({ meetingId }) {
 
       branding: {
         enabled: true,
-        logoURL: "https://mans.org.pl/wp-content/uploads/2022/03/logo-mans-www.png",
+        logoURL: "https://ambro.dev/wp-content/uploads/2022/03/logo-mans-www.png",
         name: "Soft UD",
         poweredBy: false,
       },
@@ -99,8 +99,8 @@ export default function VideoCallPage({ meetingId }) {
         // visible when redirect on leave not provieded
         actionButton: {
           // optional action button
-          label: "MANS", // action button label
-          href: "https://mans.org.pl/", // action button href
+          label: "Ambro-Dev", // action button label
+          href: "https://ambro.dev/", // action button href
           onClick: () => {
             // Close the current tab/window
             window.close();

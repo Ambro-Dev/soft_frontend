@@ -34,13 +34,25 @@ function Footer() {
         <Grid item xs={10} lg={8}>
           <SoftBox display="flex" justifyContent="center" flexWrap="wrap" mb={3}>
             <SoftBox mr={{ xs: 2, lg: 3, xl: 6 }}>
-              <SoftTypography component="a" href="https://ambro.dev" target="_blank" variant="body2" color="secondary">
+              <SoftTypography
+                component="a"
+                href="https://ambro.dev"
+                target="_blank"
+                variant="body2"
+                color="secondary"
+              >
                 Ambro-Dev
               </SoftTypography>
             </SoftBox>
             <SoftBox mr={{ xs: 2, lg: 3, xl: 6 }}>
-              <SoftTypography component="a" href="https://mans.org.pl" target="_blank" variant="body2" color="secondary">
-                MANS
+              <SoftTypography
+                component="a"
+                href="https://ambro.dev"
+                target="_blank"
+                variant="body2"
+                color="secondary"
+              >
+                Ambro-Dev
               </SoftTypography>
             </SoftBox>
           </SoftBox>

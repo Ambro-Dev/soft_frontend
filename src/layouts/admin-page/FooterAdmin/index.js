@@ -53,18 +53,18 @@ function FooterAdmin({ light }) {
             })}
           >
             <SoftBox component="li" pr={2} lineHeight={1}>
-              <Link href="https://mans.org.pl/" target="_blank">
+              <Link href="https://ambro.dev/" target="_blank">
                 <SoftTypography
                   variant="button"
                   fontWeight="regular"
                   color={light ? "white" : "dark"}
                 >
-                  MANS
+                  Ambro-Dev
                 </SoftTypography>
               </Link>
             </SoftBox>
             <SoftBox component="li" px={2} lineHeight={1}>
-              <Link href="https://mans.org.pl/" target="_blank">
+              <Link href="https://ambro.dev/" target="_blank">
                 <SoftTypography
                   variant="button"
                   fontWeight="regular"
@@ -75,7 +75,7 @@ function FooterAdmin({ light }) {
               </Link>
             </SoftBox>
             <SoftBox component="li" px={2} lineHeight={1}>
-              <Link href="https://mans.org.pl/" target="_blank">
+              <Link href="https://ambro.dev/" target="_blank">
                 <SoftTypography
                   variant="button"
                   fontWeight="regular"
@@ -86,7 +86,7 @@ function FooterAdmin({ light }) {
               </Link>
             </SoftBox>
             <SoftBox component="li" pl={2} lineHeight={1}>
-              <Link href="https://mans.org.pl/" target="_blank">
+              <Link href="https://ambro.dev/" target="_blank">
                 <SoftTypography
                   variant="button"
                   fontWeight="regular"

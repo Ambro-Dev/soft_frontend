@@ -58,14 +58,14 @@ function SidenavCard() {
           </SoftBox>
           <SoftButton
             component={Link}
-            href="https://www.mans.org.pl/"
+            href="https://www.ambro.dev/"
             target="_blank"
             rel="noreferrer"
             size="small"
             color="white"
             fullWidth
           >
-            MANS
+            Ambro-Dev
           </SoftButton>
         </SoftBox>
       </CardContent>

@@ -102,7 +102,7 @@ Footer.defaultProps = {
   company: { href: "https://www.ambro.dev/", name: "Ambro-Dev" },
   links: [
     { href: "https://www.ambro.dev/", name: "Ambro-Dev" },
-    { href: "https://www.mans.org.pl", name: "MANS" },
+    { href: "https://www.ambro.dev", name: "Ambro-Dev" },
   ],
 };
 
