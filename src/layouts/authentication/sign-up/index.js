@@ -3,8 +3,8 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.Ambro-Dev.pl/product/soft-ui-dashboard-react
-* Copyright 2022 Ambro-Dev (https://www.Ambro-Dev.pl)
+* Product Page: https://www.gwarant-service.pl/product/soft-ui-dashboard-react
+* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
 
 Coded by Ambro-Dev
 
@@ -35,41 +35,35 @@ import Separator from "layouts/authentication/components/Separator";
 
 // Images
 import curved6 from "assets/images/curved-images/curved14.jpg";
+import { useTranslation } from "react-i18next";
 
 function SignUp() {
+  const { t } = useTranslation("translation", { keyPrefix: "signup" });
   const [agreement, setAgremment] = useState(true);
 
   const handleSetAgremment = () => setAgremment(!agreement);
 
   return (
-    <BasicLayout
-      title="Welcome!"
-      description="Use these awesome forms to login or create new account in your project for free."
-      image={curved6}
-    >
+    <BasicLayout title={t("title")} description={t("description")} image={curved6}>
       <Card>
         <SoftBox p={3} mb={1} textAlign="center">
           <SoftTypography variant="h5" fontWeight="medium">
-            Register with
+            {t("regwith")}
           </SoftTypography>
         </SoftBox>
-        <SoftBox mb={2}>
-          <Socials />
-        </SoftBox>
-        <Separator />
         <SoftBox pt={2} pb={3} px={3}>
           <SoftBox component="form" role="form">
             <SoftBox mb={2}>
-              <SoftInput placeholder="Name" />
+              <SoftInput placeholder={t("name")} />
             </SoftBox>
             <SoftBox mb={2}>
-              <SoftInput placeholder="Surname" />
+              <SoftInput placeholder={t("surname")} />
             </SoftBox>
             <SoftBox mb={2}>
-              <SoftInput type="email" placeholder="Email" />
+              <SoftInput type="email" placeholder={t("email")} />
             </SoftBox>
             <SoftBox mb={2}>
-              <SoftInput type="password" placeholder="Password" />
+              <SoftInput type="password" placeholder={t("password")} />
             </SoftBox>
             <SoftBox display="flex" alignItems="center">
               <Checkbox checked={agreement} onChange={handleSetAgremment} />
@@ -79,7 +73,7 @@ function SignUp() {
                 onClick={handleSetAgremment}
                 sx={{ cursor: "poiner", userSelect: "none" }}
               >
-                &nbsp;&nbsp;I agree the&nbsp;
+                &nbsp;&nbsp;{t("agree")}&nbsp;
               </SoftTypography>
               <SoftTypography
                 component="a"
@@ -88,17 +82,17 @@ function SignUp() {
                 fontWeight="bold"
                 textGradient
               >
-                Terms and Conditions
+                {t("terms")}
               </SoftTypography>
             </SoftBox>
             <SoftBox mt={4} mb={1}>
               <SoftButton variant="gradient" color="dark" fullWidth>
-                sign up
+                {t("signup")}
               </SoftButton>
             </SoftBox>
             <SoftBox mt={3} textAlign="center">
               <SoftTypography variant="button" color="text" fontWeight="regular">
-                Already have an account?&nbsp;
+                {t("haveaccount")}&nbsp;
                 <SoftTypography
                   component={Link}
                   to="/authentication/sign-in"
@@ -107,7 +101,7 @@ function SignUp() {
                   fontWeight="bold"
                   textGradient
                 >
-                  Sign in
+                  {t("signin")}
                 </SoftTypography>
               </SoftTypography>
             </SoftBox>

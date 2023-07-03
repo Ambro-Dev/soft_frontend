@@ -3,8 +3,8 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.Ambro-Dev.pl/product/soft-ui-dashboard-react
-* Copyright 2022 Ambro-Dev (https://www.Ambro-Dev.pl)
+* Product Page: https://www.gwarant-service.pl/product/soft-ui-dashboard-react
+* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
 
 Coded by Ambro-Dev
 
@@ -30,8 +30,6 @@ import Icon from "@mui/material/Icon";
 
 // Soft UD - Demo components
 import SoftBox from "components/SoftBox";
-import SoftTypography from "components/SoftTypography";
-import SoftInput from "components/SoftInput";
 
 // Soft UD - Demo examples
 import Breadcrumbs from "examples/Breadcrumbs";

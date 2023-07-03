@@ -3,8 +3,8 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.Ambro-Dev.pl/product/soft-ui-dashboard-react
-* Copyright 2022 Ambro-Dev (https://www.Ambro-Dev.pl)
+* Product Page: https://www.gwarant-service.pl/product/soft-ui-dashboard-react
+* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
 
 Coded by Ambro-Dev
 
@@ -34,15 +34,15 @@ import CoverLayout from "layouts/authentication/components/CoverLayout";
 import curved9 from "assets/images/curved-images/curved-6.jpg";
 
 import axios from "api/axios";
-import socketio from "socket.io-client";
+import { useTranslation } from "react-i18next";
+import ErrorContext from "context/ErrorProvider";
 
 function SignIn() {
-  const { setSocket } = useContext(SocketContext);
-  const [rememberMe, setRememberMe] = useState(false);
+  const { t } = useTranslation("translation", { keyPrefix: "login" });
 
-  const handleSetRememberMe = () => setRememberMe(!rememberMe);
+  const { setAuth, persist, setPersist } = useAuth();
 
-  const { setAuth } = useAuth();
+  const { socket, setSocket } = useContext(SocketContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -55,6 +55,8 @@ function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
+
+  const { showErrorNotification } = useContext(ErrorContext);
 
   useEffect(() => {
     emailRef.current.focus();
@@ -90,25 +92,30 @@ function SignIn() {
       const name = response?.data?.name;
       const surname = response?.data?.surname;
       const picture = response?.data?.picture;
-      const studentNumber = response?.data?.studentNumber;
-      setAuth({
-        userId,
-        name,
-        email,
-        surname,
-        roles,
-        studentNumber,
-        accessToken,
-        picture,
-      });
-      const newSocket = socketio.connect(process.env.REACT_APP_SERVER_URL, { path: "/socket" });
-      setSocket(newSocket);
-      setEmail("");
-      setPassword("");
-      if (roles.includes(1001)) {
-        navigate("/admin", { replace: true });
+
+      if (roles.includes(4004)) {
+        showErrorNotification("Error", "Your account have been blocked");
       } else {
-        navigate(from, { replace: true });
+        setAuth({
+          userId,
+          name,
+          email,
+          surname,
+          roles,
+          accessToken,
+          picture,
+        });
+        if (!socket) {
+          const newSocket = io(process.env.REACT_APP_SERVER_URL);
+          setSocket(newSocket);
+        }
+        setEmail("");
+        setPassword("");
+        if (roles.includes(1001)) {
+          navigate("/admin", { replace: true });
+        } else {
+          navigate(from, { replace: true });
+        }
       }
     } catch (err) {
       if (!err?.response) {
@@ -120,54 +127,60 @@ function SignIn() {
       } else {
         setErrMsg("Login Failed");
       }
+      errRef.current.focus();
     }
   };
 
+  const togglePersist = () => {
+    setPersist((prev) => !prev);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("persist", persist);
+  }, [persist]);
+
   return (
-    <CoverLayout
-      title="Welcome"
-      description="Enter your email and password to sign in"
-      image={curved9}
-    >
+    <CoverLayout title={t("title")} description={t("description")} image={curved9}>
       <SoftBox component="form" role="form" onSubmit={handleSubmit}>
         <SoftBox mb={2}>
           <SoftBox mb={1} ml={0.5}>
             <SoftTypography component="label" variant="caption" fontWeight="bold">
-              Email
+              {t("email")}
             </SoftTypography>
           </SoftBox>
           <SoftInput
             type="email"
-            placeholder="Email"
+            placeholder={t("email")}
             ref={emailRef}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </SoftBox>
+        {errMsg}
         <SoftBox mb={2}>
           <SoftBox mb={1} ml={0.5}>
             <SoftTypography component="label" variant="caption" fontWeight="bold">
-              Password
+              {t("password")}
             </SoftTypography>
           </SoftBox>
           <SoftInput
             type="password"
-            placeholder="Password"
+            placeholder={t("password")}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </SoftBox>
         <SoftBox display="flex" alignItems="center">
-          <Switch checked={rememberMe} onChange={handleSetRememberMe} />
+          <Switch checked={persist} onChange={togglePersist} />
           <SoftTypography
             variant="button"
             fontWeight="regular"
-            onClick={handleSetRememberMe}
+            onClick={togglePersist}
             sx={{ cursor: "pointer", userSelect: "none" }}
           >
-            &nbsp;&nbsp;Remember me
+            &nbsp;&nbsp;{t("remember")}
           </SoftTypography>
         </SoftBox>
         <SoftBox mt={4} mb={1}>
@@ -178,12 +191,27 @@ function SignIn() {
             fullWidth
             onClick={handleSubmit}
           >
-            sign in
+            {t("signin")}
           </SoftButton>
         </SoftBox>
         <SoftBox mt={3} textAlign="center">
           <SoftTypography variant="button" color="text" fontWeight="regular">
-            Don&apos;t have an account?{" "}
+            Forgot password?{" "}
+            <SoftTypography
+              component={Link}
+              to="/authentication/reset-password"
+              variant="button"
+              color="info"
+              fontWeight="medium"
+              textGradient
+            >
+              Reset
+            </SoftTypography>
+          </SoftTypography>
+        </SoftBox>
+        <SoftBox mt={3} textAlign="center">
+          <SoftTypography variant="button" color="text" fontWeight="regular">
+            {t("noaccount")}{" "}
             <SoftTypography
               component={Link}
               to="/authentication/sign-up"
@@ -192,7 +220,7 @@ function SignIn() {
               fontWeight="medium"
               textGradient
             >
-              Sign up
+              {t("signup")}
             </SoftTypography>
           </SoftTypography>
         </SoftBox>

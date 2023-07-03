@@ -19,8 +19,10 @@ import SoftTypography from "components/SoftTypography";
 import SoftButton from "components/SoftButton";
 
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 function Account({ setClassName }) {
+  const { t } = useTranslation("translation", { keyPrefix: "wizard" });
   const [design, setDesign] = useState(true);
   const [code, setCode] = useState(false);
 
@@ -68,7 +70,7 @@ function Account({ setClassName }) {
       <SoftBox width="80%" textAlign="center" mx="auto" my={4}>
         <SoftBox mb={1}>
           <SoftTypography variant="h5" fontWeight="regular">
-            What type of event You want to create?
+            {t("typeofevent")}
           </SoftTypography>
         </SoftBox>
       </SoftBox>
@@ -85,7 +87,7 @@ function Account({ setClassName }) {
                 <Icon sx={{ color: design ? "white" : "inherit" }}>video_call</Icon>
               </SoftButton>
               <SoftTypography variant="h6" sx={{ mt: 1 }}>
-                Video Lesson
+              {t("videolesson")}
               </SoftTypography>
             </SoftBox>
           </Grid>
@@ -100,7 +102,7 @@ function Account({ setClassName }) {
                 <Icon sx={{ color: code ? "white" : "inherit" }}>grading</Icon>
               </SoftButton>
               <SoftTypography variant="h6" sx={{ mt: 1 }}>
-                Exam
+              {t("exam")}
               </SoftTypography>
             </SoftBox>
           </Grid>

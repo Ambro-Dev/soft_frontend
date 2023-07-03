@@ -26,6 +26,7 @@ import SoftButton from "components/SoftButton";
 import { ExpandMore } from "@mui/icons-material";
 import SoftAccordion from "components/SoftAccordion";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const icons = {
   success: lesson,
@@ -50,6 +51,7 @@ const DefaultItem = forwardRef(
     },
     ref
   ) => {
+    const { t } = useTranslation("translation", { keyPrefix: "defaultitem" });
     const navigate = useNavigate();
 
     const handleOpen = () => {
@@ -85,7 +87,7 @@ const DefaultItem = forwardRef(
                   <SoftBox p={1}>
                     <SoftBox width="100%" overflow="auto">
                       <SoftTypography variant="h6" color="text" fontWeight="regular">
-                        Description
+                        {t("description")}
                       </SoftTypography>
                       <SoftTypography variant="button" fontWeight="regular">
                         {eventdescription}
@@ -95,9 +97,14 @@ const DefaultItem = forwardRef(
                   <Divider variant="middle" />
                   <SoftBox width="100%" textAlign="right" mt={1}>
                     <SoftBox mt={1}>
-                      <SoftTypography component="span" variant="h6" fontWeight="regular" color="text">
+                      <SoftTypography
+                        component="span"
+                        variant="h6"
+                        fontWeight="regular"
+                        color="text"
+                      >
                         <SoftButton variant="gradient" color="success" onClick={() => handleOpen()}>
-                          View
+                          {t("view")}
                         </SoftButton>
                       </SoftTypography>
                     </SoftBox>

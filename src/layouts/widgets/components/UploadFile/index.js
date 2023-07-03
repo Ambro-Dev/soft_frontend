@@ -17,7 +17,7 @@ import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 
 // Distance Learning React examples
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import SoftButton from "components/SoftButton";
 import { DropzoneDialog } from "mui-file-dropzone";
@@ -26,13 +26,32 @@ import useAxiosPrivate from "hooks/useAxiosPrivate";
 import image from "assets/images/icons/flags/EN.png";
 import FileItem from "examples/Items/FileItem";
 import useAuth from "hooks/useAuth";
+import { useTranslation } from "react-i18next";
+import { Chip, Dialog, DialogActions } from "@mui/material";
+import ErrorContext from "context/ErrorProvider";
 
 function UploadFile({ courseId }) {
+  const { t } = useTranslation("translation", { keyPrefix: "courseinfo" });
   const { auth } = useAuth();
   const [open, setOpen] = useState(false);
   const [refreshFiles, setRefreshFiles] = useState(false);
   const [courseFiles, setCourseFiles] = useState(null);
   const axiosPrivate = useAxiosPrivate();
+
+  const [deleteFile, setDeleteFile] = useState(null);
+
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const handleClickOpenDialog = (file) => {
+    setOpenDialog(true);
+    setDeleteFile(file);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
+  const { showErrorNotification, showSuccessNotification } = useContext(ErrorContext);
 
   const handleDownload = (file) => {
     axiosPrivate
@@ -49,6 +68,20 @@ function UploadFile({ courseId }) {
       });
   };
 
+  const handleDelete = (file) => {
+    axiosPrivate
+      .delete(`files/${file.id}/delete`)
+      .then((response) => {
+        handleCloseDialog();
+        showSuccessNotification(response.data.message);
+        setDeleteFile(null);
+        setRefreshFiles(!refreshFiles);
+      })
+      .catch((error) => {
+        showErrorNotification("Error", error.message);
+      });
+  };
+
   useEffect(() => {
     axiosPrivate.get(`files/${courseId}`).then((response) => {
       setCourseFiles(response.data);
@@ -59,11 +92,16 @@ function UploadFile({ courseId }) {
     setOpen(false);
     const formData = new FormData();
     formData.append("file", files[0]);
-    const response = await axiosPrivate.post(`/files/${courseId}/upload`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+    await axiosPrivate
+      .post(`/files/${courseId}/upload`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        showSuccessNotification(response.data.message);
+      });
     setRefreshFiles(!refreshFiles);
   };
 
@@ -77,16 +115,16 @@ function UploadFile({ courseId }) {
 
   return (
     <Card sx={{ height: "500px", overflow: "auto" }}>
-      <SoftBox pt={2} px={2} lineHeight={1} sx={{ display: "flex", justifyContent: "space-between" }}>
-        <SoftTypography
-          color="text"
-          variant="h6"
-          fontWeight="medium"
-          pt={1}
-        >
-          Files
+      <SoftBox
+        pt={2}
+        px={2}
+        lineHeight={1}
+        sx={{ display: "flex", justifyContent: "space-between" }}
+      >
+        <SoftTypography color="text" variant="h6" fontWeight="medium" pt={1}>
+          {t("files")}
         </SoftTypography>
-        {auth.roles.includes(5150) && <SoftButton onClick={handleOpen}>Add File</SoftButton>}
+        {auth.roles.includes(5150) && <SoftButton onClick={handleOpen}>{t("addfile")}</SoftButton>}
         <DropzoneDialog
           open={open}
           onSave={handleSave}
@@ -118,16 +156,56 @@ function UploadFile({ courseId }) {
                 icon={image}
                 title={file.originalname}
                 event={() => handleDownload(file)}
-                eventDel={handleDownload}
+                eventDel={handleClickOpenDialog}
                 extension={extension}
                 auth={auth}
               />
             );
           })
         ) : (
-          <SoftBox>No files yet</SoftBox>
+          <SoftBox>{t("nofiles")}</SoftBox>
         )}
       </SoftBox>
+      {deleteFile && (
+        <Dialog open={openDialog} onClose={handleCloseDialog}>
+          <SoftBox key="dialog-card" sx={{ padding: 3 }}>
+            <SoftBox
+              variant="gradient"
+              bgColor="warning"
+              borderRadius="lg"
+              coloredShadow="info"
+              mt={-3}
+              p={1}
+              my={-1}
+              textAlign="center"
+              key="title"
+            >
+              <SoftTypography key="title-text" variant="h5" fontWeight="medium" color="white">
+                Confirm
+              </SoftTypography>
+            </SoftBox>
+            <SoftBox key="content" mt={4}>
+              <SoftTypography key="title-description-text" variant="button">
+                Delete file:
+              </SoftTypography>
+              <Chip sx={{ margin: 1 }} label={deleteFile.originalname} variant="outlined" />
+            </SoftBox>
+            <DialogActions>
+              <SoftButton onClick={handleCloseDialog} variant="text" color="warning">
+                Cancel
+              </SoftButton>
+              <SoftButton
+                variant="text"
+                color="error"
+                onClick={() => handleDelete(deleteFile)}
+                autoFocus
+              >
+                Delete
+              </SoftButton>
+            </DialogActions>
+          </SoftBox>
+        </Dialog>
+      )}
     </Card>
   );
 }

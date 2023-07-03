@@ -21,12 +21,33 @@ import PropTypes from "prop-types";
 // Images
 import { useEffect, useState } from "react";
 import useAxiosPrivate from "hooks/useAxiosPrivate";
+import { useTranslation } from "react-i18next";
+import { Icon, Tooltip } from "@mui/material";
+import EditCourseImage from "./EditCourseIamge";
 
-function CourseEdit({ courseId, setEditing, handleSave, editing }) {
+function CourseEdit({ courseId, setEditing, handleSave, editing, setPicture }) {
+  const { t } = useTranslation("translation", { keyPrefix: "courseedit" });
   const [course, setCourse] = useState();
   const axiosPrivate = useAxiosPrivate();
   const serverUrl = process.env.REACT_APP_SERVER_URL;
   const [pictureUrl, setPictureUrl] = useState();
+
+  const [selectedAvatar, setSelectedAvatar] = useState(null);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const savePicture = (avatar) => {
+    setSelectedAvatar(avatar);
+    setPicture(avatar);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
   useEffect(() => {
     axiosPrivate.get(`/courses/${courseId}`).then((response) => {
@@ -39,24 +60,56 @@ function CourseEdit({ courseId, setEditing, handleSave, editing }) {
     <Grid container spacing={3} alignItems="center">
       <Grid item xs={12} md={6}>
         <SoftBox display="flex" alignItems="center">
-          <SoftBox mr={2}>
-            <SoftAvatar size="xxl" src={pictureUrl} alt="course image" />
+          <SoftBox mr={2} position="relative" height="max-content">
+            <SoftAvatar
+              size="xxl"
+              src={selectedAvatar ? `${serverUrl}/${selectedAvatar}` : pictureUrl}
+              alt="course image"
+              sx={{ width: "100%", height: "auto" }}
+              variant="rounded"
+            />
+            {editing && (
+              <SoftBox alt="edit-tooltip" position="absolute" right={0} bottom={0} mr={-1} mb={-1}>
+                <Tooltip title="Edit" placement="top">
+                  <SoftButton
+                    variant="gradient"
+                    color="info"
+                    size="small"
+                    iconOnly
+                    onClick={openModal}
+                  >
+                    <Icon>edit</Icon>
+                  </SoftButton>
+                </Tooltip>
+                <EditCourseImage
+                  open={isModalOpen}
+                  onClose={closeModal}
+                  setSelectedAvatar={savePicture}
+                />
+              </SoftBox>
+            )}
           </SoftBox>
           <SoftBox lineHeight={1}>
             <SoftTypography variant="h6" fontWeight="medium">
               {course?.name}
             </SoftTypography>
-            <SoftBadge variant="gradient" color="info" size="xs" badgeContent="course" container />
+            <SoftBadge
+              variant="gradient"
+              color="info"
+              size="xs"
+              badgeContent={t("badge")}
+              container
+            />
           </SoftBox>
         </SoftBox>
       </Grid>
       <Grid item xs={12} md={6} sx={{ textAlign: "right" }}>
         {editing ? (
-          <SoftButton color="success" onClick={handleSave}>
-            Save
+          <SoftButton color="success" onClick={() => handleSave()}>
+            {t("save")}
           </SoftButton>
         ) : (
-          <SoftButton onClick={setEditing}>Edit Course</SoftButton>
+          <SoftButton onClick={() => setEditing(!editing)}>{t("edit")}</SoftButton>
         )}
       </Grid>
     </Grid>
@@ -68,6 +121,7 @@ CourseEdit.propTypes = {
   setEditing: PropTypes.func.isRequired,
   editing: PropTypes.bool.isRequired,
   handleSave: PropTypes.func.isRequired,
+  setPicture: PropTypes.func.isRequired,
 };
 
 export default CourseEdit;

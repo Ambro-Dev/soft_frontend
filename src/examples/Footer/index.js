@@ -3,8 +3,8 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.Ambro-Dev.pl/product/soft-ui-dashboard-react
-* Copyright 2022 Ambro-Dev (https://www.Ambro-Dev.pl)
+* Product Page: https://www.gwarant-service.pl/product/soft-ui-dashboard-react
+* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
 
 Coded by Ambro-Dev
 
@@ -99,10 +99,10 @@ function Footer({ company, links }) {
 
 // Setting default values for the props of Footer
 Footer.defaultProps = {
-  company: { href: "https://www.Ambro-Dev.pl/", name: "Ambro-Dev" },
+  company: { href: "https://www.gwarant-service.pl/", name: "Gwarant-Service" },
   links: [
-    { href: "https://www.Ambro-Dev.pl/", name: "Ambro-Dev" },
-    { href: "https://www.ambro.dev", name: "Ambro-Dev" },
+    { href: "https://www.gwarant-service.pl/", name: "Gwarant-Service" },
+    { href: "https://www.mans.org.pl", name: "MANS" },
   ],
 };
 

@@ -4,8 +4,8 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.Ambro-Dev.pl/product/soft-ui-dashboard-react
-* Copyright 2022 Ambro-Dev (https://www.Ambro-Dev.pl)
+* Product Page: https://www.gwarant-service.pl/product/soft-ui-dashboard-react
+* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
 
 Coded by Ambro-Dev
 
@@ -35,8 +35,10 @@ import Header from "layouts/profile/components/Header";
 import useAuth from "hooks/useAuth";
 import { useEffect, useState } from "react";
 import useAxiosPrivate from "hooks/useAxiosPrivate";
+import { useTranslation } from "react-i18next";
 
 function Overview() {
+  const { t } = useTranslation("translation", { keyPrefix: "profile" });
   const serverUrl = process.env.REACT_APP_SERVER_URL;
   const { auth } = useAuth();
   const [courses, setCourses] = useState([]);
@@ -92,6 +94,7 @@ function Overview() {
 
             // extract text of last message and shorten it
             const lastMessage = conversation.messages[0];
+            if (!lastMessage) return "";
             const shortenedDescription = lastMessage.text.slice(0, 30);
             const otherUser = conversation.members.find((member) => member._id !== auth.userId);
 
@@ -109,7 +112,7 @@ function Overview() {
                 type: "internal",
                 route: "/profile/messages",
                 color: "info",
-                label: "message",
+                label: [t("message")],
               },
             };
           });
@@ -127,18 +130,18 @@ function Overview() {
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} xl={4}>
             <ProfileInfoCard
-              title="profile information"
+              title={t("profileInfo")}
               info={{
-                fullName: `${auth.name} ${auth.surname}`,
-                email: `${auth.email}`,
+                [t("fullname")]: `${auth.name} ${auth.surname}`,
+                [t("email")]: `${auth.email}`,
               }}
             />
           </Grid>
           <Grid item xs={12} xl={4}>
             {conversationList && conversationList.length > 0 ? (
-              <ProfilesList title="conversations" profiles={conversationList} shadow={false} />
+              <ProfilesList title={t("conversations")} profiles={conversationList} shadow={false} />
             ) : (
-              <SoftBox>No conversations</SoftBox>
+              <SoftBox>{t("noconversations")}</SoftBox>
             )}
           </Grid>
         </Grid>
@@ -148,12 +151,12 @@ function Overview() {
           <SoftBox pt={2} px={2}>
             <SoftBox mb={0.5}>
               <SoftTypography variant="h6" fontWeight="medium">
-                Courses
+                {t("courses")}
               </SoftTypography>
             </SoftBox>
             <SoftBox mb={1}>
               <SoftTypography variant="button" fontWeight="regular" color="text">
-                All my Courses
+                {t("allcourses")}
               </SoftTypography>
             </SoftBox>
           </SoftBox>
@@ -161,7 +164,7 @@ function Overview() {
             {courses.length > 0 ? (
               <Grid container spacing={3}>
                 {courses.map((course) => (
-                  <Grid item xs={12} md={6} xl={3}>
+                  <Grid item xs={12} md={6} xl={3} key={course._id}>
                     <DefaultProjectCard
                       image={`${serverUrl}/${course.pic}`}
                       title={`${course.name}`}
@@ -170,7 +173,7 @@ function Overview() {
                         type: "internal",
                         route: `/courses/course-info/${course._id}`,
                         color: "info",
-                        label: "go to course",
+                        label: `${t("gotocourse")}`,
                       }}
                     />
                   </Grid>

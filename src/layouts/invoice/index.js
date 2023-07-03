@@ -27,8 +27,10 @@ import useAuth from "hooks/useAuth";
 import useAxiosPrivate from "hooks/useAxiosPrivate";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
+import { useTranslation } from "react-i18next";
 
 function Invoice() {
+  const { t } = useTranslation("translation", { keyPrefix: "seeevent" });
   const serverUrl = process.env.REACT_APP_SERVER_URL;
   const [course, setCourse] = useState();
   const axiosPrivate = useAxiosPrivate();
@@ -114,7 +116,7 @@ function Invoice() {
                                     })
                                   }
                                 >
-                                  Edit Exam
+                                  {t("edit")}
                                 </SoftButton>
                               ) : (
                                 <SoftButton
@@ -123,11 +125,11 @@ function Invoice() {
                                   href={selectedEvent.url}
                                   target="_blank"
                                 >
-                                  Join call
+                                  {t("join")}
                                 </SoftButton>
                               )}
                               <SoftButton variant="gradient" color="error" sx={{ ml: 1 }}>
-                                Delete Event
+                              {t("delete")}
                               </SoftButton>
                             </>
                           ) : (
@@ -141,8 +143,8 @@ function Invoice() {
                                   disabled={new Date(selectedEvent.start) > new Date()} // check if start date is in the future
                                 >
                                   {new Date(selectedEvent.start) > new Date()
-                                    ? "Call not started yet"
-                                    : "Join call"}
+                                    ? [t("eventnotstarted")]
+                                    : [t("join")]}
                                 </SoftButton>
                               ) : (
                                 <SoftButton
@@ -156,8 +158,8 @@ function Invoice() {
                                   disabled={new Date(selectedEvent.start) > new Date()} // check if start date is in the future
                                 >
                                   {new Date(selectedEvent.start) > new Date()
-                                    ? "Exam not available"
-                                    : "Join exam"}
+                                    ? [t("examnotavailable")]
+                                    : [t("joinexam")]}
                                 </SoftButton>
                               )}
                             </SoftBox>
@@ -175,7 +177,7 @@ function Invoice() {
                         color="secondary"
                         fontWeight="regular"
                       >
-                        Title
+                        {t("title")}
                       </SoftTypography>
                       <SoftTypography variant="h5" fontWeight="medium">
                         {selectedEvent.title}
@@ -196,7 +198,7 @@ function Invoice() {
                             color="secondary"
                             fontWeight="regular"
                           >
-                            Start time:
+                            {t("start")}
                           </SoftTypography>
                         </SoftBox>
                         <SoftBox width="50%">
@@ -218,7 +220,7 @@ function Invoice() {
                             color="secondary"
                             fontWeight="regular"
                           >
-                            End time:
+                            {t("end")}
                           </SoftTypography>
                         </SoftBox>
                         <SoftBox width="50%">
@@ -240,7 +242,7 @@ function Invoice() {
                     color="secondary"
                     fontWeight="regular"
                   >
-                    Description
+                    {t("description")}
                   </SoftTypography>
                   <Divider variant="middle" />
                   <SoftTypography variant="button" fontWeight="regular">
@@ -255,7 +257,7 @@ function Invoice() {
                   <Grid item xs={12} lg={5}>
                     <Divider variant="middle" />
                     <SoftTypography variant="h6" fontWeight="regular">
-                      Files
+                    {t("files")}
                     </SoftTypography>
                     <SoftBox mt={1} mb={2} lineHeight={0}>
                       <AttachFileIcon fontSize="large" />
@@ -271,7 +273,7 @@ function Invoice() {
                       mt={{ xs: 2, md: 0 }}
                     >
                       <SoftButton variant="gradient" color="warning" onClick={handleClick}>
-                        Close
+                      {t("close")}
                       </SoftButton>
                     </SoftBox>
                   </Grid>

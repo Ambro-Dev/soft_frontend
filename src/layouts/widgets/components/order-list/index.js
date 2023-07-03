@@ -22,6 +22,7 @@ import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import SoftTypography from "components/SoftTypography";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // Set up the fonts
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -29,6 +30,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 // Data
 
 function OrderList({ courseId }) {
+  const { t } = useTranslation("translation", { keyPrefix: "memberslist" });
   const navigate = useNavigate();
   const axiosPrivate = useAxiosPrivate();
   const [imageUrls, setImageUrls] = useState([]);
@@ -46,10 +48,7 @@ function OrderList({ courseId }) {
         table: {
           headerRows: 1,
           widths: ["*", "*", "*"],
-          body: [
-            ["Name", "Surname"],
-            ...users.map((user) => [user.name, user.surname]),
-          ],
+          body: [["Name", "Surname"], ...users.map((user) => [user.name, user.surname])],
         },
       },
     ],
@@ -63,6 +62,8 @@ function OrderList({ courseId }) {
   };
 
   useEffect(() => {
+    let isMounted = true; // Add a flag to track if the component is mounted
+
     const fetchUsers = async () => {
       try {
         const { data } = await axiosPrivate.get(`courses/${courseId}/members`, {
@@ -72,42 +73,55 @@ function OrderList({ courseId }) {
         const processedData = data.map((user) => ({
           name: user.name,
           surname: user.surname,
+          studentNumber: user.studentNumber,
         }));
-        Promise.all(
-          data.map((user) =>
-            axiosPrivate
-              .get(`/profile-picture/users/${user._id}/picture`, {
-                responseType: "blob",
-              })
-              .then((response) => URL.createObjectURL(response.data))
-              .catch((error) => {
-                console.error("Error fetching image:", error);
-                return null;
-              })
-          )
-        ).then(setImageUrls);
-        setCsvList(processedData);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchUsers();
-  }, []);
-
-  useEffect(() => {
-    if (users.length === imageUrls.length) {
-      try {
-        const tableData = users.map((user, index) => ({
+        const tableData = data.map((user) => ({
           id: user._id,
           name: user.name,
           surname: user.surname,
-          picture: imageUrls[index],
+          studentNumber: user.studentNumber,
         }));
         setListUsers(tableData);
+
+        const usersPictures = data.map((user) =>
+          axiosPrivate
+            .get(`/profile-picture/users/${user._id}/picture`, {
+              responseType: "blob",
+            })
+            .then((response) => URL.createObjectURL(response.data))
+            .catch((error) => {
+              showErrorNotification("Error", error.message);
+              return null;
+            })
+        );
+        Promise.all(usersPictures).then((images) => {
+          if (isMounted) {
+            // Check if the component is still mounted before updating the state
+            setImageUrls(images);
+          }
+        });
+        setCsvList(processedData);
       } catch (error) {
-        console.error(error);
+        showErrorNotification("Error", error.message);
       }
-    }
+    };
+
+    fetchUsers();
+
+    return () => {
+      isMounted = false; // Set the flag to false when the component is unmounted
+    };
+  }, []);
+
+  useEffect(() => {
+    const tableData = users.map((user, index) => ({
+      id: user._id,
+      name: user.name,
+      surname: user.surname,
+      studentNumber: user.studentNumber,
+      picture: imageUrls[index],
+    }));
+    setListUsers(tableData);
   }, [imageUrls]);
 
   const handlePdfExport = () => {
@@ -143,69 +157,61 @@ function OrderList({ courseId }) {
 
   return (
     <SoftBox>
-      {listUsers && listUsers.length > 0 ? (
-        <SoftBox my={3}>
-          <SoftBox display="flex" justifyContent="space-between" alignItems="flex-start" mb={2}>
-            <SoftBox display="flex">
-              <SoftBox ml={1}>
-                <SoftButton variant="outlined" color="dark" onClick={() => exportCSV(csvList)}>
-                  <Icon>description</Icon>
-                  &nbsp;export csv
-                </SoftButton>
-              </SoftBox>
-              <SoftBox ml={1}>
-                <SoftButton variant="outlined" color="dark" onClick={handlePdfExport}>
-                  <Icon>picture_as_pdf</Icon>
-                  &nbsp;Export PDF
-                </SoftButton>
-              </SoftBox>
+      <SoftBox my={3}>
+        <SoftBox display="flex" justifyContent="space-between" alignItems="flex-start" mb={2}>
+          <SoftBox display="flex">
+            <SoftBox ml={1}>
+              <SoftButton variant="outlined" color="dark" onClick={() => exportCSV(csvList)}>
+                <Icon>description</Icon>
+                &nbsp;{t("exportcsv")}
+              </SoftButton>
+            </SoftBox>
+            <SoftBox ml={1}>
+              <SoftButton variant="outlined" color="dark" onClick={handlePdfExport}>
+                <Icon>picture_as_pdf</Icon>
+                &nbsp;{t("exportpdf")}
+              </SoftButton>
             </SoftBox>
           </SoftBox>
+        </SoftBox>
+        <SoftBox>
           <SoftBox>
-            {users.length > 0 && (
-              <SoftBox>
-                <Card>
-                  <SoftBox pt={2} px={2} lineHeight={1}>
-                    <SoftTypography variant="h6" fontWeight="medium">
-                      Members
-                    </SoftTypography>
-                  </SoftBox>
-                  <DataTable
-                    table={{
-                      columns: [
-                        {
-                          Header: "picture",
-                          accessor: "picture",
-                          width: "10%",
-                          Cell: ({ row }) => <SoftAvatar src={row.original.picture} size="sm" />,
-                        },
-                        { Header: "name", accessor: "name" },
-                        { Header: "surname", accessor: "surname" },
-                        {
-                          Header: "actions",
-                          accessor: "actions",
-                          Cell: ({ row }) => (
-                            <SoftButton
-                              onClick={() => navigate("/profile/messages")}
-                            >
-                              Message
-                            </SoftButton>
-                          ),
-                        },
-                      ],
-                      rows: listUsers,
-                    }}
-                    entriesPerPage={false}
-                    canSearch
-                  />
-                </Card>
+            <Card>
+              <SoftBox pt={2} px={2} lineHeight={1}>
+                <SoftTypography variant="h6" fontWeight="medium">
+                  {t("members")} ({users.length})
+                </SoftTypography>
               </SoftBox>
-            )}
+              <DataTable
+                table={{
+                  columns: [
+                    {
+                      Header: [t("picture")],
+                      accessor: "picture",
+                      width: "10%",
+                      Cell: ({ row }) => <SoftAvatar src={row.original.picture} size="sm" />,
+                    },
+                    { Header: [t("name")], accessor: "name" },
+                    { Header: [t("surname")], accessor: "surname" },
+                    {
+                      Header: [t("actions")],
+                      accessor: "actions",
+                      Cell: ({ row }) => (
+                        <SoftButton onClick={() => navigate("/profile/messages")}>
+                          {t("message")}
+                        </SoftButton>
+                      ),
+                    },
+                  ],
+                  rows: listUsers,
+                }}
+                entriesPerPage={false}
+                canSearch
+              />
+            </Card>
           </SoftBox>
         </SoftBox>
-      ) : (
-        <SoftBox>Still loading</SoftBox>
-      )}
+      </SoftBox>
     </SoftBox>
   );
 }

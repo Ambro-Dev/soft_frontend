@@ -23,10 +23,12 @@ import SoftButton from "components/SoftButton";
 import FormField from "layouts/wizard/components/FormField";
 import { useState } from "react";
 import NewEvent from "../NewCourse";
+import { useTranslation } from "react-i18next";
 
 // Images
 
 function About({ setDescription, setName, name, description, setPic }) {
+  const { t } = useTranslation("translation", { keyPrefix: "courses" });
   const serverUrl = process.env.REACT_APP_SERVER_URL;
   const [selectedAvatar, setSelectedAvatar] = useState(null);
 
@@ -50,11 +52,11 @@ function About({ setDescription, setName, name, description, setPic }) {
       <SoftBox width="82%" textAlign="center" mx="auto" my={4}>
         <SoftBox mb={1}>
           <SoftTypography variant="h5" fontWeight="regular">
-            Add course name and description
+            {t("courseinfo")}
           </SoftTypography>
         </SoftBox>
         <SoftTypography variant="body2" color="text">
-          Change image if You like
+        {t("courseimage")}
         </SoftTypography>
       </SoftBox>
       <SoftBox mt={2}>
@@ -65,11 +67,12 @@ function About({ setDescription, setName, name, description, setPic }) {
                 src={
                   selectedAvatar
                     ? `${serverUrl}/${selectedAvatar}`
-                    : `${serverUrl}/storage/courses/course_images/course_image_11.gif`
+                    : `${serverUrl}/storage/courses/course_images/course_image_02.gif`
                 }
                 alt="profile picture"
                 size="xxl"
                 variant="rounded"
+                sx={{height: 120, width: 180}}
               />
               <SoftBox alt="spotify logo" position="absolute" right={0} bottom={0} mr={-1} mb={-1}>
                 <Tooltip title="Edit" placement="top">
@@ -89,18 +92,24 @@ function About({ setDescription, setName, name, description, setPic }) {
           </Grid>
           <Grid item xs={12} sm={12}>
             <SoftBox mb={2}>
+            <SoftTypography component="label" variant="caption" fontWeight="bold">
+              {t("coursename")}
+            </SoftTypography>
               <FormField
                 type="text"
-                label="Name"
+                label={t("coursename")}
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
             </SoftBox>
             <SoftBox mb={2}>
+            <SoftTypography component="label" variant="caption" fontWeight="bold">
+              {t("coursedesc")}
+            </SoftTypography>
               <FormField
                 type="text"
-                label="Description"
+                label={t("coursedesc")}
                 multiline
                 required
                 value={description}

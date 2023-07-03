@@ -37,10 +37,13 @@ import OrderInfo from "./components/OrderInfo";
 import OrderList from "./components/order-list";
 import UploadFile from "./components/UploadFile/index";
 import CourseEdit from "./components/CourseEdit";
+import { useTranslation } from "react-i18next";
+import ErrorContext from "context/ErrorProvider";
 
 // Data
 
 function Widgets() {
+  const { t } = useTranslation("translation", { keyPrefix: "courseinfo" });
   const { auth } = useAuth();
   const navigate = useNavigate();
   const params = useParams();
@@ -51,6 +54,10 @@ function Widgets() {
   const axiosPrivate = useAxiosPrivate();
   const [description, setDescription] = useState();
   const [editing, setEditing] = useState(false);
+  const [reload, setReload] = useState(false);
+  const { showErrorNotification, showSuccessNotification } = useContext(ErrorContext);
+  const [picture, setPicture] = useState(null);
+  const [newDescription, setNewDescription] = useState();
 
   const handleOpen = async (info) => {
     info.jsEvent.preventDefault();
@@ -82,7 +89,7 @@ function Widgets() {
         setNextEvents(futureEvents);
       })
       .catch((error) => {
-        console.error(error);
+        showErrorNotification("Error", error.message);
       });
 
     axiosPrivate
@@ -93,7 +100,7 @@ function Widgets() {
         setDescription(data.description);
       })
       .catch((error) => {
-        console.error(error);
+        showErrorNotification("Error", error.message);
       });
 
     socket.emit("join-course", courseId);
@@ -105,10 +112,25 @@ function Widgets() {
     return () => {
       socket.emit("leave-course", courseId);
     };
-  }, []);
+  }, [reload]);
 
   const handleSave = () => {
-    setEditing(!editing);
+    const editCourse = {
+      course: courseId,
+      description: newDescription !== description ? newDescription : undefined,
+      picture: picture || undefined,
+    };
+    if (description !== newDescription || picture) {
+      axiosPrivate
+        .put("/courses/edit-course", editCourse)
+        .then((response) => {
+          showSuccessNotification(response.data.message);
+          setTimeout(1000);
+          setEditing(!editing);
+          setReload(!reload);
+        })
+        .catch((error) => showErrorNotification("Error", error.message));
+    }
   };
 
   return (
@@ -124,6 +146,7 @@ function Widgets() {
                   setEditing={setEditing}
                   editing={editing}
                   handleSave={handleSave}
+                  setPicture={setPicture}
                 />
               </Grid>
             ) : (
@@ -143,7 +166,7 @@ function Widgets() {
                           fontWeight="medium"
                           color="text"
                         >
-                          Description / Info
+                          {t("descinfo")}
                         </SoftTypography>
                       </SoftBox>
                       <SoftBox sx={{ overflow: "auto", maxHeight: 250 }}>
@@ -159,7 +182,7 @@ function Widgets() {
                           fontWeight="medium"
                           color="text"
                         >
-                          Description / Info
+                          {t("descinfo")}
                         </SoftTypography>
                       </SoftBox>
                       <SoftBox sx={{ overflow: "auto", maxHeight: 250 }}>
@@ -174,8 +197,13 @@ function Widgets() {
                 ) : (
                   <SoftBox p={2}>
                     <SoftBox mb={1} ml={0.5} lineHeight={0} display="inline-block">
-                      <SoftTypography component="label" variant="h6" fontWeight="medium" color="text">
-                        Description / Info
+                      <SoftTypography
+                        component="label"
+                        variant="h6"
+                        fontWeight="medium"
+                        color="text"
+                      >
+                        {t("descinfo")}
                       </SoftTypography>
                     </SoftBox>
                     <SoftBox sx={{ overflow: "auto", maxHeight: 250 }}>
@@ -195,11 +223,11 @@ function Widgets() {
           <Grid item xs={12} lg={5}>
             {useMemo(() => (
               <Calendar
-                header={{ title: "calendar" }}
+                header={{ title: `${t("caltitle")}` }}
                 initialView="dayGridMonth"
                 events={calendarEventsData}
                 eventClick={handleOpen}
-                locale="en"
+                locale={t("callang")}
               />
             ))}
           </Grid>

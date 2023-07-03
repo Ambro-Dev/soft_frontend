@@ -36,12 +36,15 @@ import { SocketContext } from "context/socket";
 import SoftSnackbar from "components/SoftSnackbar";
 import useAuth from "hooks/useAuth";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
+import { useTranslation } from "react-i18next";
 
 function getSteps() {
-  return ["Type", "Info", "Date"];
+  const { t } = useTranslation("translation", { keyPrefix: "wizard" });
+  return [[t("step1")], [t("step2")], [t("step3")]];
 }
 
 function Wizard() {
+  const { t } = useTranslation("translation", { keyPrefix: "wizard" });
   const navigate = useNavigate();
   const { auth } = useAuth();
   const date = new Date();
@@ -202,11 +205,11 @@ function Wizard() {
               <SoftBox mt={6} mb={8} textAlign="center">
                 <SoftBox mb={1}>
                   <SoftTypography variant="h3" fontWeight="bold">
-                    Build Your Event
+                    {t("build")}
                   </SoftTypography>
                 </SoftBox>
                 <SoftTypography variant="h5" fontWeight="regular" color="secondary">
-                  This information will let us know more about you.
+                {t("info")}
                 </SoftTypography>
               </SoftBox>
               <Card>
@@ -227,7 +230,7 @@ function Wizard() {
                         <SoftBox />
                       ) : (
                         <SoftButton variant="outlined" color="dark" onClick={handleBack}>
-                          back
+                          {t("back")}
                         </SoftButton>
                       )}
                       {activeStep === 1 && (name === "" || description === "") ? (
@@ -237,7 +240,7 @@ function Wizard() {
                           onClick={!isLastStep ? handleNext : createEvent}
                           disabled
                         >
-                          {isLastStep ? "send" : "next"}
+                          {isLastStep ? [t("send")] : [t("next")]}
                         </SoftButton>
                       ) : (
                         <SoftButton
@@ -245,7 +248,7 @@ function Wizard() {
                           color="dark"
                           onClick={!isLastStep ? handleNext : createEvent}
                         >
-                          {isLastStep ? "send" : "next"}
+                          {isLastStep ? [t("send")] : [t("next")]}
                         </SoftButton>
                       )}
                     </SoftBox>
@@ -257,7 +260,7 @@ function Wizard() {
           </Grid>
         </SoftBox>
       ) : (
-        <SoftBox>You have no access to this page</SoftBox>
+        <SoftBox>{t("noaccess")}</SoftBox>
       )}
 
       <Footer />

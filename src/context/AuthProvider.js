@@ -1,14 +1,18 @@
-import { createContext, useState, useMemo } from "react";
+import { createContext, useMemo, useState } from "react";
 import PropTypes from "prop-types";
 
 const AuthContext = createContext({});
 
 export function AuthProvider({ children }) {
   const [auth, setAuth] = useState({});
+  const [persist, setPersist] = useState(JSON.parse(localStorage.getItem("persist")) || false);
 
-  const authValue = useMemo(() => ({ auth, setAuth }), [auth, setAuth]);
+  const persistValues = useMemo(
+    () => ({ auth, setAuth, persist, setPersist }),
+    [auth, setAuth, persist, setPersist]
+  );
 
-  return <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={persistValues}>{children}</AuthContext.Provider>;
 }
 
 AuthProvider.propTypes = {

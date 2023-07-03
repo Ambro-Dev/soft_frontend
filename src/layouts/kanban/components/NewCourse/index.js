@@ -4,8 +4,10 @@ import Modal from "@mui/material/Modal";
 import SoftBox from "components/SoftBox";
 import SoftButton from "components/SoftButton";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 function NewEvent(props) {
+  const { t } = useTranslation("translation", { keyPrefix: "courses" });
   const serverUrl = process.env.REACT_APP_SERVER_URL;
 
   const imageOptions = [
@@ -46,7 +48,7 @@ function NewEvent(props) {
         onSubmit={setSelectedAvatar}
         sx={style}
       >
-        <SoftBox id="modal-modal-title">Choose an avatar:</SoftBox>
+        <SoftBox id="modal-modal-title">{t("avatar")}</SoftBox>
         <SoftBox id="modal-modal-description">
           {imageOptions.map((avatar) => (
             <SoftBox
@@ -60,7 +62,7 @@ function NewEvent(props) {
             />
           ))}
         </SoftBox>
-        <SoftButton onClick={onClose}>Close</SoftButton>
+        <SoftButton onClick={onClose}>{t("close")}</SoftButton>
       </SoftBox>
     </Modal>
   );

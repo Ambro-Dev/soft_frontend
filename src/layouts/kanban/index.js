@@ -23,8 +23,10 @@ import CategoriesList from "examples/Lists/CategoriesList";
 import SoftButton from "components/SoftButton";
 import About from "./components/About";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
+import { useTranslation } from "react-i18next";
 
 function Courses() {
+  const { t } = useTranslation("translation", { keyPrefix: "courses" });
   const { auth } = useAuth();
   const [courses, setCourses] = useState([]);
   const axiosPrivate = useAxiosPrivate();
@@ -58,7 +60,7 @@ function Courses() {
       }
     };
 
-    if (auth.roles.includes(5150)) {
+    if (auth.roles?.includes(5150)) {
       fetchTeacherCourses();
     } else {
       fetchUserCourses();
@@ -100,26 +102,26 @@ function Courses() {
     return (
       <DashboardLayout>
         <DashboardNavbar />
-        {auth.roles.includes(5150) && (
+        {auth.roles?.includes(5150) && (
           <SoftBox>
             {isVisible ? (
               <SoftBox>
                 {name === "" || description === "" ? (
                   <>
                     <SoftButton color="success" circular disabled onClick={handleSave}>
-                      Save
+                      {t("save")}
                     </SoftButton>
                     <SoftButton color="error" circular onClick={handleClose} sx={{ ml: 1 }}>
-                      Cancel
+                    {t("cancel")}
                     </SoftButton>
                   </>
                 ) : (
                   <>
                     <SoftButton color="success" circular onClick={handleSave}>
-                      Save
+                    {t("save")}
                     </SoftButton>
                     <SoftButton color="error" circular onClick={handleClose} sx={{ ml: 1 }}>
-                      Cancel
+                    {t("cancel")}
                     </SoftButton>
                   </>
                 )}
@@ -134,7 +136,7 @@ function Courses() {
               </SoftBox>
             ) : (
               <SoftButton color="success" circular onClick={handleOpen} sx={{ mb: 1 }}>
-                Add course
+                {t("add")}
               </SoftButton>
             )}
           </SoftBox>
@@ -143,7 +145,7 @@ function Courses() {
         {courses.length > 0 ? (
           <SoftBox py={3}>
             <CategoriesList
-              title="Courses"
+              title={t("courses")}
               categories={courses.map((course) => ({
                 color: "dark",
                 image: course.pic,
@@ -153,7 +155,7 @@ function Courses() {
                     {course.teacherId.name} {course.teacherId.surname}
                     {"   "}
                     <SoftTypography variant="caption" color="text" fontWeight="medium">
-                      {course.members.length} members
+                      {course.members.length} {t("members")}
                     </SoftTypography>
                   </>
                 ),
@@ -162,7 +164,7 @@ function Courses() {
             />
           </SoftBox>
         ) : (
-          <SoftBox py={3}>You have no courses</SoftBox>
+          <SoftBox py={3}>{t("nocourses")}</SoftBox>
         )}
         <Footer />
       </DashboardLayout>

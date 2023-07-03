@@ -3,8 +3,8 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.Ambro-Dev.pl/product/soft-ui-dashboard-react
-* Copyright 2022 Ambro-Dev (https://www.Ambro-Dev.pl)
+* Product Page: https://www.gwarant-service.pl/product/soft-ui-dashboard-react
+* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
 
 Coded by Ambro-Dev
 
@@ -19,8 +19,10 @@ import Divider from "@mui/material/Divider";
 // Soft UD - Demo components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
+import { useTranslation } from "react-i18next";
 
 function Separator() {
+  const { t } = useTranslation("translation", { keyPrefix: "signup" });
   return (
     <SoftBox position="relative" py={0.25}>
       <Divider />
@@ -34,7 +36,7 @@ function Separator() {
         sx={{ transform: "translate(-50%, -60%)" }}
       >
         <SoftTypography variant="button" fontWeight="medium" color="secondary">
-          or
+          {t("or")}
         </SoftTypography>
       </SoftBox>
     </SoftBox>

@@ -26,8 +26,7 @@ import SoftSnackbarIconRoot from "components/SoftSnackbar/SoftSnackbarIconRoot";
 
 // Distance Learning React context
 
-function MDSnackbar({ color, icon, title, dateTime, content, close, bgWhite, ...rest }) {
-
+function SoftSnackbar({ color, icon, title, dateTime, content, close, bgWhite, ...rest }) {
   let titleColor;
   let dateTimeColor;
   let dividerColor;
@@ -70,8 +69,7 @@ function MDSnackbar({ color, icon, title, dateTime, content, close, bgWhite, ...
         borderRadius="md"
         p={1}
         sx={{
-          backgroundColor: ({ palette }) =>
-            palette[color] || palette.white.main,
+          backgroundColor: ({ palette }) => palette[color] || palette.white.main,
         }}
       >
         <SoftBox
@@ -133,13 +131,13 @@ function MDSnackbar({ color, icon, title, dateTime, content, close, bgWhite, ...
 }
 
 // Setting default values for the props of MDSnackbar
-MDSnackbar.defaultProps = {
+SoftSnackbar.defaultProps = {
   bgWhite: false,
   color: "info",
 };
 
 // Typechecking props for MDSnackbar
-MDSnackbar.propTypes = {
+SoftSnackbar.propTypes = {
   color: PropTypes.oneOf([
     "primary",
     "secondary",
@@ -158,4 +156,4 @@ MDSnackbar.propTypes = {
   bgWhite: PropTypes.bool,
 };
 
-export default MDSnackbar;
+export default SoftSnackbar;

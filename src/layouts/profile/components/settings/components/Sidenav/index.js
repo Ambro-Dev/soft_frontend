@@ -14,12 +14,14 @@ import Icon from "@mui/material/Icon";
 // Distance Learning React components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
+import { useTranslation } from "react-i18next";
 
 function Sidenav() {
+  const { t } = useTranslation("translation", { keyPrefix: "settings" });
 
   const sidenavItems = [
-    { icon: "person", label: "change profile image", href: "profile" },
-    { icon: "lock", label: "change password", href: "change-password" },
+    { icon: "person", label: [t("changepi")], href: "profile" },
+    { icon: "lock", label: [t("changepass")], href: "change-password" },
   ];
 
   const renderSidenavItems = sidenavItems.map(({ icon, label, href }, key) => {

@@ -52,7 +52,7 @@ const authorsTableData = {
 
   rows: [
     {
-      author: <Author image={team2} name="John Michael" email="john@ambro.dev" />,
+      author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
       function: <Function job="Manager" org="Organization" />,
       status: (
         <SoftBadge variant="gradient" badgeContent="online" color="success" size="xs" container />
@@ -75,16 +75,10 @@ const authorsTableData = {
       ),
     },
     {
-      author: <Author image={team3} name="Alexa Liras" email="alexa@ambro.dev" />,
+      author: <Author image={team3} name="Alexa Liras" email="alexa@creative-tim.com" />,
       function: <Function job="Programator" org="Developer" />,
       status: (
-        <SoftBadge
-          variant="gradient"
-          badgeContent="offline"
-          color="secondary"
-          size="xs"
-          container
-        />
+        <SoftBadge variant="gradient" badgeContent="offline" color="secondary" size="xs" container />
       ),
       employed: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
@@ -104,7 +98,7 @@ const authorsTableData = {
       ),
     },
     {
-      author: <Author image={team4} name="Laurent Perrier" email="laurent@ambro.dev" />,
+      author: <Author image={team4} name="Laurent Perrier" email="laurent@creative-tim.com" />,
       function: <Function job="Executive" org="Projects" />,
       status: (
         <SoftBadge variant="gradient" badgeContent="online" color="success" size="xs" container />
@@ -127,7 +121,7 @@ const authorsTableData = {
       ),
     },
     {
-      author: <Author image={team3} name="Michael Levi" email="michael@ambro.dev" />,
+      author: <Author image={team3} name="Michael Levi" email="michael@creative-tim.com" />,
       function: <Function job="Programator" org="Developer" />,
       status: (
         <SoftBadge variant="gradient" badgeContent="online" color="success" size="xs" container />
@@ -150,16 +144,10 @@ const authorsTableData = {
       ),
     },
     {
-      author: <Author image={team2} name="Richard Gran" email="richard@ambro.dev" />,
+      author: <Author image={team2} name="Richard Gran" email="richard@creative-tim.com" />,
       function: <Function job="Manager" org="Executive" />,
       status: (
-        <SoftBadge
-          variant="gradient"
-          badgeContent="offline"
-          color="secondary"
-          size="xs"
-          container
-        />
+        <SoftBadge variant="gradient" badgeContent="offline" color="secondary" size="xs" container />
       ),
       employed: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">
@@ -179,16 +167,10 @@ const authorsTableData = {
       ),
     },
     {
-      author: <Author image={team4} name="Miriam Eric" email="miriam@ambro.dev" />,
+      author: <Author image={team4} name="Miriam Eric" email="miriam@creative-tim.com" />,
       function: <Function job="Programtor" org="Developer" />,
       status: (
-        <SoftBadge
-          variant="gradient"
-          badgeContent="offline"
-          color="secondary"
-          size="xs"
-          container
-        />
+        <SoftBadge variant="gradient" badgeContent="offline" color="secondary" size="xs" container />
       ),
       employed: (
         <SoftTypography variant="caption" color="secondary" fontWeight="medium">

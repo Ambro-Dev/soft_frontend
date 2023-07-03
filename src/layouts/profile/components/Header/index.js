@@ -4,8 +4,8 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.Ambro-Dev.pl/product/soft-ui-dashboard-react
-* Copyright 2022 Ambro-Dev (https://www.Ambro-Dev.pl)
+* Product Page: https://www.gwarant-service.pl/product/soft-ui-dashboard-react
+* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
 
 Coded by Ambro-Dev
 
@@ -45,8 +45,10 @@ import curved0 from "assets/images/curved-images/curved0.jpg";
 import useAxiosPrivate from "hooks/useAxiosPrivate";
 import useAuth from "hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function Header({ stage }) {
+  const { t } = useTranslation("translation", { keyPrefix: "header" });
   const navigate = useNavigate();
   const axiosPrivate = useAxiosPrivate();
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
@@ -144,14 +146,10 @@ function Header({ stage }) {
                 onChange={handleSetTabValue}
                 sx={{ background: "transparent" }}
               >
-                <Tab label="Profile" icon={<Cube />} onClick={() => navigate("/profile")} />
+                <Tab label={t("profile")} icon={<Cube />} onClick={() => navigate("/profile")} />
+                <Tab label={t("messages")} icon={<Document />} onClick={() => navigate("/profile/messages")}/>
                 <Tab
-                  label="Messages"
-                  icon={<Document />}
-                  onClick={() => navigate("/profile/messages")}
-                />
-                <Tab
-                  label="Settings"
+                  label={t("settings")}
                   icon={<Settings />}
                   onClick={() => navigate("/profile/settings")}
                 />

@@ -18,10 +18,12 @@ import { SocketContext } from "context/socket";
 import bgImage from "assets/images/curved-images/curved14.jpg";
 import axios from "api/axios";
 import CoverLayout from "../components/CoverLayout";
+import { useTranslation } from "react-i18next";
 
 const LOGOUT_URL = "/logout";
 
 function Logout() {
+  const { t } = useTranslation("translation", { keyPrefix: "logout" });
   const { socket, setSocket } = useContext(SocketContext);
   const { setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -47,12 +49,12 @@ function Logout() {
           <SoftBox component="form" role="form">
             <SoftBox mt={4} mb={1}>
               <SoftButton variant="gradient" color="info" onClick={logout} fullWidth>
-                Logout
+                {t("logout")}
               </SoftButton>
             </SoftBox>
             <SoftBox mt={4} mb={1}>
               <SoftButton variant="gradient" color="info" onClick={goBack} fullWidth>
-                Cancle
+              {t("cancel")}
               </SoftButton>
             </SoftBox>
           </SoftBox>

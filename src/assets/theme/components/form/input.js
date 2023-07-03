@@ -3,8 +3,8 @@
 * Soft UD - Demo - v3.1.0
 =========================================================
 
-* Product Page: https://www.Ambro-Dev.pl/product/soft-ui-dashboard-pro-react
-* Copyright 2022 Ambro-Dev (https://www.Ambro-Dev.pl)
+* Product Page: https://www.gwarant-service.pl/product/soft-ui-dashboard-pro-react
+* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
 
 Coded by Ambro-Dev
 
@@ -17,7 +17,7 @@ Coded by Ambro-Dev
 import colors from "assets/theme/base/colors";
 import borders from "assets/theme/base/borders";
 
-// Soft UI Dashboard PRO helper functions
+// Soft UD Dashboard PRO helper functions
 import pxToRem from "assets/theme/functions/pxToRem";
 
 const { inputColors } = colors;

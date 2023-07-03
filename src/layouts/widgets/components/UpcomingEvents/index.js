@@ -22,10 +22,15 @@ import PropTypes from "prop-types";
 import SoftButton from "components/SoftButton";
 import { useNavigate } from "react-router-dom";
 import useAuth from "hooks/useAuth";
+import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
 
 function UpcomingEvents({ events, courseId }) {
+  const { i18n } = useTranslation();
+  const { t } = useTranslation("translation", { keyPrefix: "courseinfo" });
   const { auth } = useAuth();
   const navigate = useNavigate();
+  const [language, setLanguage] = useState("pl");
 
   const handleOpen = async (e) => {
     e.preventDefault();
@@ -35,6 +40,18 @@ function UpcomingEvents({ events, courseId }) {
 
     navigate("/applications/wizard", { state: course });
   };
+  
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      setLanguage(i18n.language);
+    };
+
+    i18n.on("languageChanged", handleLanguageChange);
+
+    return () => {
+      i18n.off("languageChanged", handleLanguageChange);
+    };
+  }, [i18n]);
 
   return (
     <Card sx={{ height: "500px" }}>
@@ -46,36 +63,36 @@ function UpcomingEvents({ events, courseId }) {
         sx={{ display: "flex", justifyContent: "space-between" }}
       >
         <SoftTypography variant="h6" fontWeight="medium" pt={1}>
-          Upcoming Events
+          {t("upcevents")}
         </SoftTypography>
         {auth.roles.includes(5150) && (
           <SoftButton color="success" circular onClick={handleOpen}>
-            Add Event
+            {t("addevent")}
           </SoftButton>
         )}
       </SoftBox>
       <SoftBox sx={{ overflow: "auto" }}>
         {events && events.length > 0 ? (
           events.map((event, index) => {
-            const formattedStartDate = new Date(event.start).toLocaleDateString("us-US", {
+            const formattedStartDate = new Date(event.start).toLocaleDateString([t("date")], {
               year: "numeric",
               month: "short",
               day: "numeric",
             });
-            const formattedStartTime = new Date(event.start).toLocaleTimeString("en-US", {
+            const formattedStartTime = new Date(event.start).toLocaleTimeString([t("date")], {
               hour: "numeric",
               minute: "numeric",
-              hour12: true,
+              hour12: language === "en",
             });
-            const formattedEndDate = new Date(event.end).toLocaleDateString("us-US", {
+            const formattedEndDate = new Date(event.end).toLocaleDateString([t("date")], {
               year: "numeric",
               month: "short",
               day: "numeric",
             });
-            const formattedEndTime = new Date(event.end).toLocaleTimeString("en-US", {
+            const formattedEndTime = new Date(event.end).toLocaleTimeString([t("date")], {
               hour: "numeric",
               minute: "numeric",
-              hour12: true,
+              hour12: language === "en",
             });
             return (
               <SoftBox key={event._id}>
@@ -96,7 +113,7 @@ function UpcomingEvents({ events, courseId }) {
             );
           })
         ) : (
-          <SoftBox p={2}>No events yet</SoftBox>
+          <SoftBox p={2}>{t("noevents")}</SoftBox>
         )}
       </SoftBox>
     </Card>

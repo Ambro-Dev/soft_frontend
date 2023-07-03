@@ -16,13 +16,15 @@ import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import SoftButton from "components/SoftButton";
 import SoftInput from "components/SoftInput";
+import { useTranslation } from "react-i18next";
 
 function ChangePassword() {
+  const { t } = useTranslation("translation", { keyPrefix: "settings" });
   const passwordRequirements = [
-    "One special characters",
-    "Min 6 characters",
-    "One number (2 are recommended)",
-    "Change it often",
+    [t("passreq1")],
+    [t("passreq2")],
+    [t("passreq3")],
+    [t("passreq4")],
   ];
 
   const renderPasswordRequirements = passwordRequirements.map((item, key) => {
@@ -40,11 +42,14 @@ function ChangePassword() {
   return (
     <Card id="change-password">
       <SoftBox p={3}>
-        <SoftTypography variant="h5">Change Password</SoftTypography>
+        <SoftTypography variant="h5">{t("changepass")}</SoftTypography>
       </SoftBox>
       <SoftBox component="form" pb={3} px={3}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
+          <SoftTypography component="label" variant="caption" fontWeight="bold">
+              {t("currpass")}
+            </SoftTypography>
             <SoftInput
               fullWidth
               label="Current Password"
@@ -52,6 +57,9 @@ function ChangePassword() {
             />
           </Grid>
           <Grid item xs={12}>
+          <SoftTypography component="label" variant="caption" fontWeight="bold">
+              {t("newpass")}
+            </SoftTypography>
             <SoftInput
               fullWidth
               label="New Password"
@@ -59,6 +67,9 @@ function ChangePassword() {
             />
           </Grid>
           <Grid item xs={12}>
+          <SoftTypography component="label" variant="caption" fontWeight="bold">
+              {t("confpass")}
+            </SoftTypography>
             <SoftInput
               fullWidth
               label="Confirm New Password"
@@ -67,11 +78,11 @@ function ChangePassword() {
           </Grid>
         </Grid>
         <SoftBox mt={6} mb={1}>
-          <SoftTypography variant="h5">Password requirements</SoftTypography>
+          <SoftTypography variant="h5">{t("passreq")}</SoftTypography>
         </SoftBox>
         <SoftBox mb={1}>
           <SoftTypography variant="body2" color="text">
-            Please follow this guide for a strong password
+            {t("pleasefollow")}
           </SoftTypography>
         </SoftBox>
         <SoftBox display="flex" justifyContent="space-between" alignItems="flex-end" flexWrap="wrap">
@@ -80,7 +91,7 @@ function ChangePassword() {
           </SoftBox>
           <SoftBox ml="auto">
             <SoftButton variant="gradient" color="dark" size="small">
-              update password
+              {t("update")}
             </SoftButton>
           </SoftBox>
         </SoftBox>

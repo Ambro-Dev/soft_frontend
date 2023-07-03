@@ -1,5 +1,5 @@
 // Images
-import backgroundImage from "assets/images/logos/logo-ambro.png";
+import backgroundImage from "assets/images/logos/logo-mans.png";
 
 function card(theme, ownerState) {
   const { borders, functions, transitions, breakpoints } = theme;
