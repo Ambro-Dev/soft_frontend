@@ -31,7 +31,7 @@ import PageLayout from "examples/LayoutContainers/PageLayout";
 import pageRoutes from "page.routes";
 
 // Images
-import pattern from "assets/images/shapes/pattern-lines.svg";
+import pattern from "assets/images/curved-images/white-curved.jpeg";
 
 function IllustrationLayout({ color, header, title, description, illustration, children }) {
   return (

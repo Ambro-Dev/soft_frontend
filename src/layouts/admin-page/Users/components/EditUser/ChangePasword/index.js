@@ -62,8 +62,6 @@ function ChangePassword({ setChngPassword, chngPassword, userId }) {
       return;
     }
     try {
-      const newUser = { id: userId, newPassword: pwd };
-      await axiosPrivate.post(process.env.REACT_APP_ADMIN_CHANGE_PASSWORD, newUser);
       setPwd("");
       showSuccessNotification("Password changed");
     } catch (err) {

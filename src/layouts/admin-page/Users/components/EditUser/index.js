@@ -254,7 +254,6 @@ function EditUser() {
             variant="gradient"
             bgColor="secondary"
             borderRadius="lg"
-            coloredShadow="success"
             mx={2}
             mt={-3}
             p={3}
@@ -556,7 +555,6 @@ function EditUser() {
                         variant="gradient"
                         bgColor="success"
                         borderRadius="lg"
-                        coloredShadow="success"
                         mt={-3}
                         p={1}
                         my={3}
@@ -598,7 +596,6 @@ function EditUser() {
                                   variant="gradient"
                                   bgColor="info"
                                   borderRadius="lg"
-                                  coloredShadow="info"
                                   mt={-3}
                                   p={1}
                                   my={-1}

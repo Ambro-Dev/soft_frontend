@@ -214,7 +214,6 @@ function EditCourse() {
             variant="gradient"
             bgColor="secondary"
             borderRadius="lg"
-            coloredShadow="success"
             mx={2}
             mt={-3}
             p={3}
@@ -487,7 +486,6 @@ function EditCourse() {
                               variant="gradient"
                               bgColor="secondary"
                               borderRadius="lg"
-                              coloredShadow="success"
                               mt={-3}
                               p={1}
                               mb={1}
@@ -554,7 +552,6 @@ function EditCourse() {
                               variant="gradient"
                               bgColor="secondary"
                               borderRadius="lg"
-                              coloredShadow="success"
                               mt={-3}
                               p={1}
                               mb={1}

@@ -36,6 +36,7 @@ import curved9 from "assets/images/curved-images/curved-6.jpg";
 import axios from "api/axios";
 import { useTranslation } from "react-i18next";
 import ErrorContext from "context/ErrorProvider";
+import { Divider } from "@mui/material";
 
 function SignIn() {
   const { t } = useTranslation("translation", { keyPrefix: "login" });
@@ -139,8 +140,63 @@ function SignIn() {
     localStorage.setItem("persist", persist);
   }, [persist]);
 
+  const renderLogins = (login, passwd, type) => {
+    return (
+      <SoftBox display="flex" flexDirection="column">
+        <SoftTypography variant="h6" fontWeight="bold">
+          {type}
+        </SoftTypography>
+        <SoftBox mt={1} display="flex">
+          <SoftTypography
+            variant="button"
+            color="info"
+            sx={{ paddingRight: 1 }}
+            fontWeight="medium"
+          >
+            Login:
+          </SoftTypography>
+          <SoftTypography variant="button" fontWeight="bold">
+            {login}
+          </SoftTypography>
+        </SoftBox>
+        <SoftBox display="flex">
+          <SoftTypography
+            variant="button"
+            color="info"
+            sx={{ paddingRight: 1 }}
+            fontWeight="medium"
+          >
+            Password:
+          </SoftTypography>
+          <SoftTypography variant="button" fontWeight="bold">
+            {passwd}
+          </SoftTypography>
+        </SoftBox>
+      </SoftBox>
+    );
+  };
+
   return (
     <CoverLayout title={t("title")} description={t("description")} image={curved9}>
+      <SoftBox display="flex" flexDirection="column" justifyContent="center" mb={2}>
+        {renderLogins(
+          process.env.REACT_APP_STUDENT_LOGIN,
+          process.env.REACT_APP_STUDENT_PASSWORD,
+          "Student"
+        )}
+        <Divider />
+        {renderLogins(
+          process.env.REACT_APP_TEACHER_LOGIN,
+          process.env.REACT_APP_TEACHER_PASSWORD,
+          "Teacher"
+        )}
+        <Divider />
+        {renderLogins(
+          process.env.REACT_APP_ADMIN_LOGIN,
+          process.env.REACT_APP_ADMIN_PASSWORD,
+          "Admin"
+        )}
+      </SoftBox>
       <SoftBox component="form" role="form" onSubmit={handleSubmit}>
         <SoftBox mb={2}>
           <SoftBox mb={1} ml={0.5}>

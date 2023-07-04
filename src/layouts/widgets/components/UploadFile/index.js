@@ -173,7 +173,6 @@ function UploadFile({ courseId }) {
               variant="gradient"
               bgColor="warning"
               borderRadius="lg"
-              coloredShadow="info"
               mt={-3}
               p={1}
               my={-1}

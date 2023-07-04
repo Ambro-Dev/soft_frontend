@@ -16,28 +16,25 @@ import Card from "@mui/material/Card";
 
 // Images
 import bgImage from "assets/images/curved-images/white-curved.jpeg";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useAxiosPrivate from "hooks/useAxiosPrivate";
 import CoverLayout from "../components/CoverLayout";
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import SoftInput from "components/SoftInput";
 import SoftButton from "components/SoftButton";
+import ErrorContext from "context/ErrorProvider";
 
 function ResetPassword() {
   const [email, setEmail] = useState("");
   const axiosPrivate = useAxiosPrivate();
 
+  const { showErrorNotification, showSuccessNotification } = useContext(ErrorContext);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axiosPrivate.post("/reset-password", { email });
-      console.log(response.data); // Handle the response as needed
-    } catch (error) {
-      console.error(error);
-      console.log(error);
-    }
+    showSuccessNotification("You will receive an e-mail in maximum 60 seconds");
   };
   return (
     <CoverLayout coverHeight="50vh" image={bgImage}>
@@ -46,7 +43,6 @@ function ResetPassword() {
           variant="gradient"
           bgColor="info"
           borderRadius="lg"
-          coloredShadow="success"
           mx={2}
           mt={-3}
           py={2}

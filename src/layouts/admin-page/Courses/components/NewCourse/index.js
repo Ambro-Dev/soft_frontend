@@ -96,7 +96,6 @@ function NewCourse({ visible, setVisible, loading, setLoading }) {
         variant="gradient"
         bgColor="info"
         borderRadius="lg"
-        coloredShadow="success"
         mx={2}
         mt={-3}
         p={3}
