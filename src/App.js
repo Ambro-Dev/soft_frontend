@@ -84,7 +84,7 @@ export default function App() {
   // Cache for the rtl
 
   useEffect(() => {
-    const newSocket = io(process.env.REACT_APP_SERVER_URL, { path: "/socket.io" });
+    const newSocket = io(process.env.REACT_APP_SOCKET_URL, { path: "/socket.io" });
     setSocket(newSocket);
 
     // Emit the custom event with the userId after connection
