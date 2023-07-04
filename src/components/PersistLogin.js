@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import ErrorContext from "context/ErrorProvider";
 import { Backdrop, CircularProgress } from "@mui/material";
 import useRefreshToken from "../hooks/useRefreshToken";
-import useAuth from "../hooks/useAuth";
+import useAuth from "hooks/useAuth";
 
 function PersistLogin() {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,6 +19,7 @@ function PersistLogin() {
       try {
         await refresh();
       } catch (err) {
+        console.log(err);
         if (err.response.status === 401)
           showErrorNotification("Time out", "You have been logged out");
         else showErrorNotification("Error", err.message);

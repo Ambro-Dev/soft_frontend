@@ -235,7 +235,7 @@ function EditCourse() {
                     {edit ? (
                       <SoftBox display="flex" flexDirection="column">
                         <SoftBox mb={2}>
-                          <SoftTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+                          <SoftTypography variant="h6" fontWeight="medium" mt={1}>
                             Name
                           </SoftTypography>
                           <SoftInput
@@ -248,7 +248,7 @@ function EditCourse() {
                           />
                         </SoftBox>
                         <SoftBox mb={2}>
-                          <SoftTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+                          <SoftTypography variant="h6" fontWeight="medium" mt={1}>
                             Description
                           </SoftTypography>
                           <SoftInput
@@ -262,6 +262,9 @@ function EditCourse() {
                           />
                         </SoftBox>
                         <SoftBox pr={1}>
+                          <SoftTypography variant="h6" fontWeight="medium" mt={1}>
+                            Teacher
+                          </SoftTypography>
                           <Autocomplete
                             disablePortal
                             options={teachersList}
@@ -271,6 +274,7 @@ function EditCourse() {
                               <TextField
                                 {...params}
                                 label={`${newTeacher.name} ${newTeacher.surname}`}
+                                style={{ paddingTop: 10 }}
                               />
                             )}
                           />
@@ -280,7 +284,7 @@ function EditCourse() {
                       <SoftBox display="flex" flexDirection="column">
                         <SoftBox p={2}>
                           <SoftBox mb={1} ml={0.5} lineHeight={0} display="inline-block">
-                            <SoftTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+                            <SoftTypography variant="h6" fontWeight="medium" mt={1}>
                               Name
                             </SoftTypography>
                           </SoftBox>
@@ -293,7 +297,7 @@ function EditCourse() {
                         {description && (
                           <SoftBox p={2}>
                             <SoftBox mb={1} ml={0.5} lineHeight={0} display="inline-block">
-                              <SoftTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+                              <SoftTypography variant="h6" fontWeight="medium" mt={1}>
                                 Description
                               </SoftTypography>
                             </SoftBox>
@@ -306,7 +310,7 @@ function EditCourse() {
                         )}
                         <SoftBox p={2}>
                           <SoftBox mb={1} ml={0.5} lineHeight={0} display="inline-block">
-                            <SoftTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+                            <SoftTypography variant="h6" fontWeight="medium" mt={1}>
                               Teacher
                             </SoftTypography>
                           </SoftBox>

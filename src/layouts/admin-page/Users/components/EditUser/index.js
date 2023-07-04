@@ -275,7 +275,7 @@ function EditUser() {
                     {edit ? (
                       <>
                         <SoftBox mb={2} display="flex" flexDirection="column">
-                          <SoftTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+                          <SoftTypography variant="h6" fontWeight="medium" mt={1}>
                             Name
                           </SoftTypography>
                           <SoftInput
@@ -288,7 +288,7 @@ function EditUser() {
                           />
                         </SoftBox>
                         <SoftBox mb={2} display="flex" flexDirection="column">
-                          <SoftTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+                          <SoftTypography variant="h6" fontWeight="medium" mt={1}>
                             Surname
                           </SoftTypography>
                           <SoftInput
@@ -302,7 +302,7 @@ function EditUser() {
                           />
                         </SoftBox>
                         <SoftBox mb={2} display="flex" flexDirection="column">
-                          <SoftTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+                          <SoftTypography variant="h6" fontWeight="medium" mt={1}>
                             Email
                           </SoftTypography>
                           <SoftInput
@@ -316,7 +316,7 @@ function EditUser() {
                         </SoftBox>
                         {studentNumber && (
                           <SoftBox mb={2} display="flex" flexDirection="column">
-                            <SoftTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+                            <SoftTypography variant="h6" fontWeight="medium" mt={1}>
                               Student Number
                             </SoftTypography>
                             <SoftInput
@@ -350,7 +350,7 @@ function EditUser() {
                               display="inline-block"
                               flexDirection="column"
                             >
-                              <SoftTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+                              <SoftTypography variant="h6" fontWeight="medium" mt={1}>
                                 Name
                               </SoftTypography>
                             </SoftBox>
@@ -370,7 +370,7 @@ function EditUser() {
                               display="inline-block"
                               flexDirection="column"
                             >
-                              <SoftTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+                              <SoftTypography variant="h6" fontWeight="medium" mt={1}>
                                 Surname
                               </SoftTypography>
                             </SoftBox>
@@ -390,7 +390,7 @@ function EditUser() {
                               display="inline-block"
                               flexDirection="column"
                             >
-                              <SoftTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+                              <SoftTypography variant="h6" fontWeight="medium" mt={1}>
                                 Email
                               </SoftTypography>
                             </SoftBox>
@@ -410,7 +410,7 @@ function EditUser() {
                               display="inline-block"
                               flexDirection="column"
                             >
-                              <SoftTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+                              <SoftTypography variant="h6" fontWeight="medium" mt={1}>
                                 Student Number
                               </SoftTypography>
                             </SoftBox>
@@ -430,7 +430,7 @@ function EditUser() {
                               display="inline-block"
                               flexDirection="column"
                             >
-                              <SoftTypography variant="h4" fontWeight="medium" color="white" mt={1}>
+                              <SoftTypography variant="h6" fontWeight="medium" mt={1}>
                                 Role
                               </SoftTypography>
                             </SoftBox>

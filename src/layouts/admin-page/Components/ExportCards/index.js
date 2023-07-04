@@ -123,7 +123,7 @@ function ExportCards() {
             alignItems: "center",
             textAlign: "center",
           }}
-          color="info"
+          color="primary"
           onClick={() => exportCSV(data, dataToExport)}
         >
           <ImportExportIcon sx={{ width: 40, height: 40 }} />

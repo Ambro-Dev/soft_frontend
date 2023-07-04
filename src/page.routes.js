@@ -62,7 +62,7 @@ const pageRoutes = [
     collapse: [
       {
         name: "Logout",
-        route: "/sign-out",
+        route: "/authentication/sign-out",
         icon: "logout",
       },
     ],

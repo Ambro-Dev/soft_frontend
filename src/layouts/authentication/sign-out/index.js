@@ -19,31 +19,28 @@ import bgImage from "assets/images/curved-images/curved14.jpg";
 import axios from "api/axios";
 import CoverLayout from "../components/CoverLayout";
 import { useTranslation } from "react-i18next";
-
-const LOGOUT_URL = "/logout";
+import useAuth from "hooks/useAuth";
 
 function Logout() {
   const { t } = useTranslation("translation", { keyPrefix: "logout" });
   const { socket, setSocket } = useContext(SocketContext);
   const { setAuth } = useContext(AuthContext);
+  const { setPersist } = useAuth();
   const navigate = useNavigate();
 
   const goBack = () => navigate(-1);
 
   const logout = async () => {
-    socket.disconnect();
+    socket?.disconnect();
     setSocket(null);
-    axios.get(LOGOUT_URL);
+    axios.get(process.env.REACT_APP_LOGOUT_URL);
+    setPersist(false);
     setAuth({});
     navigate("/authentication/sign-in");
   };
 
   return (
-    <CoverLayout
-      title="Logout"
-      description="Are You suru You want to logout?"
-      image={bgImage}
-    >
+    <CoverLayout title="Logout" description="Are You suru You want to logout?" image={bgImage}>
       <Card>
         <SoftBox pt={4} pb={3} px={3}>
           <SoftBox component="form" role="form">
@@ -54,7 +51,7 @@ function Logout() {
             </SoftBox>
             <SoftBox mt={4} mb={1}>
               <SoftButton variant="gradient" color="info" onClick={goBack} fullWidth>
-              {t("cancel")}
+                {t("cancel")}
               </SoftButton>
             </SoftBox>
           </SoftBox>

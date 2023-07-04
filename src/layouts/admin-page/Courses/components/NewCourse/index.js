@@ -145,7 +145,9 @@ function NewCourse({ visible, setVisible, loading, setLoading }) {
               options={teachersList}
               getOptionLabel={(user) => `${user.name} ${user.surname}`}
               onChange={(event, value) => setTeacher(value ? value._id : "")}
-              renderInput={(params) => <TextField {...params} label="Teacher" />}
+              renderInput={(params) => (
+                <TextField {...params} label="Teacher" style={{ paddingTop: 10 }} />
+              )}
             />
           </SoftBox>
           <SoftBox mt={4} mb={1}>

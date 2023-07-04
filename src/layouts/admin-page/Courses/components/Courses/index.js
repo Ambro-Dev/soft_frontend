@@ -85,6 +85,16 @@ function Courses({ setVisible, visible, loading }) {
                     columns: [
                       { Header: "name", accessor: "name" },
                       {
+                        Header: "Members",
+                        accessor: "members",
+                        width: "15%",
+                        Cell: ({ row }) => (
+                          <SoftTypography variant="button">
+                            {row.original.members.length}
+                          </SoftTypography>
+                        ),
+                      },
+                      {
                         Header: "action",
                         accessor: "actions",
                         width: "15%",

@@ -99,44 +99,54 @@ function ChangePassword({ setChngPassword, chngPassword, userId }) {
       </SoftBox>
       <SoftBox pt={4} pb={3} px={3}>
         <SoftBox>
-          <SoftBox mb={2} display="flex">
+          <SoftBox mb={2} display="flex" flexDirection="column">
             <SoftTypography variant="h6" fontWeight="medium" color="text">
               Password
             </SoftTypography>
-            <SoftInput
-              type={seePasswords ? "text" : "password"}
-              variant="standard"
-              onChange={(e) => setPwd(e.target.value)}
-              value={pwd}
-              required
-              aria-invalid={validPwd ? "false" : "true"}
-              aria-describedby="pwdnote"
-              fullWidth
-              helperText="8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character. Allowed special characters: ! @ # $ % & *"
-            />
-            <CheckIcon color="success" style={{ display: validPwd ? "block" : "none" }} />
-            <CloseIcon color="error" style={{ display: validPwd || !pwd ? "none" : "block" }} />
+            <SoftBox display="flex">
+              <SoftInput
+                type={seePasswords ? "text" : "password"}
+                variant="standard"
+                onChange={(e) => setPwd(e.target.value)}
+                value={pwd}
+                required
+                aria-invalid={validPwd ? "false" : "true"}
+                aria-describedby="pwdnote"
+                fullWidth
+              />
+              <CheckIcon color="success" style={{ display: validPwd ? "block" : "none" }} />
+              <CloseIcon color="error" style={{ display: validPwd || !pwd ? "none" : "block" }} />
+            </SoftBox>
+            <SoftTypography variant="button" fontWeight="light">
+              8 to 24 characters. Must include uppercase and lowercase letters, a number and a
+              special character. Allowed special characters: ! @ # $ % & *
+            </SoftTypography>
           </SoftBox>
-          <SoftBox mb={2} display="flex">
+          <SoftBox mb={2} display="flex" flexDirection="column">
             <SoftTypography variant="h6" fontWeight="medium" color="text">
               Repeat Password
             </SoftTypography>
-            <SoftInput
-              type={seePasswords ? "text" : "password"}
-              variant="standard"
-              onChange={(e) => setRepeatPwd(e.target.value)}
-              value={repeatPwd}
-              required
-              aria-invalid={validRepeatPwd && validPwd === validRepeatPwd ? "false" : "true"}
-              aria-describedby="pwdnote"
-              fullWidth
-              helperText="Must be identical as password above"
-            />
-            <CheckIcon color="success" style={{ display: validRepeatPwd ? "block" : "none" }} />
-            <CloseIcon
-              color="error"
-              style={{ display: validRepeatPwd || !repeatPwd ? "none" : "block" }}
-            />
+            <SoftBox display="flex">
+              <SoftInput
+                type={seePasswords ? "text" : "password"}
+                variant="standard"
+                onChange={(e) => setRepeatPwd(e.target.value)}
+                value={repeatPwd}
+                required
+                aria-invalid={validRepeatPwd && validPwd === validRepeatPwd ? "false" : "true"}
+                aria-describedby="pwdnote"
+                fullWidth
+              />
+              <CheckIcon color="success" style={{ display: validRepeatPwd ? "block" : "none" }} />
+              <CloseIcon
+                color="error"
+                style={{ display: validRepeatPwd || !repeatPwd ? "none" : "block" }}
+              />
+            </SoftBox>
+
+            <SoftTypography variant="button" fontWeight="light">
+              Must be identical as password above
+            </SoftTypography>
           </SoftBox>
           <SoftBox mt={4} mb={1} textAlign="end">
             <IconButton

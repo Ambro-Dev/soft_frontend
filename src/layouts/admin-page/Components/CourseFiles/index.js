@@ -37,7 +37,7 @@ function CourseFiles() {
             display="grid"
             justifyContent="center"
             alignItems="center"
-            bgColor="info"
+            bgColor="primary"
             color="white"
             width="3rem"
             height="3rem"
