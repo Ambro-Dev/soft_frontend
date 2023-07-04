@@ -5,7 +5,7 @@
 =========================================================
 
 * Product Page: https://ambro.dev/product/material-dashboard-2-pro-react-ts
-* Copyright 2022 Ambro-Dev (https://www.ambro-dev.com)
+* Copyright 2023 Ambro-Dev (https://www.ambro-dev.com)
 
 Coded by Ambro-Dev
 

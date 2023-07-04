@@ -4,7 +4,7 @@
 =========================================================
 
 * Product Page: https://www.soft.ambro.dev
-* Copyright 2022 Ambro-Dev (https://www.ambro.dev)
+* Copyright 2023 Ambro-Dev (https://www.ambro.dev)
 
 Coded by Ambro-Dev
 
@@ -47,12 +47,12 @@ function Footer() {
             <SoftBox mr={{ xs: 2, lg: 3, xl: 6 }}>
               <SoftTypography
                 component="a"
-                href="https://ambro.dev"
+                href="https://github.com/Ambro-Dev"
                 target="_blank"
                 variant="body2"
                 color="secondary"
               >
-                Ambro-Dev
+                Github
               </SoftTypography>
             </SoftBox>
           </SoftBox>
@@ -78,7 +78,7 @@ function Footer() {
         </Grid>
         <Grid item xs={12} lg={8} sx={{ textAlign: "center" }}>
           <SoftTypography variant="body2" color="secondary">
-            Copyright &copy; 2022 Soft by Ambro-Dev.
+            Copyright &copy; 2023 Soft by Ambro-Dev.
           </SoftTypography>
         </Grid>
       </Grid>

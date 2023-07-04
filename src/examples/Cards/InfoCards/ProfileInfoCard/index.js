@@ -4,7 +4,7 @@
 =========================================================
 
 * Product Page: https://www.soft.ambro.dev
-* Copyright 2022 Ambro-Dev (https://www.ambro.dev)
+* Copyright 2023 Ambro-Dev (https://www.ambro.dev)
 
 Coded by Ambro-Dev
 
@@ -68,9 +68,7 @@ function ProfileInfoCard({ title, info }) {
         <SoftBox opacity={0.3}>
           <Divider />
         </SoftBox>
-        <SoftBox>
-          {renderItems}
-        </SoftBox>
+        <SoftBox>{renderItems}</SoftBox>
       </SoftBox>
     </Card>
   );

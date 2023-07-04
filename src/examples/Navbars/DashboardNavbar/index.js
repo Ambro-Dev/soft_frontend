@@ -4,7 +4,7 @@
 =========================================================
 
 * Product Page: https://www.soft.ambro.dev
-* Copyright 2022 Ambro-Dev (https://www.ambro.dev)
+* Copyright 2023 Ambro-Dev (https://www.ambro.dev)
 
 Coded by Ambro-Dev
 
@@ -125,11 +125,6 @@ function DashboardNavbar({ absolute, light, isMini }) {
         image={<SoftBox component="img" src={en} />}
         title={["English"]}
         onClick={() => changeLanguage("en")}
-      />
-      <NotificationItem
-        image={<SoftBox component="img" src={ru} />}
-        title={["Russian"]}
-        onClick={() => changeLanguage("ru")}
       />
     </Menu>
   );

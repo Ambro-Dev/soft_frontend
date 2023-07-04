@@ -4,7 +4,7 @@
 =========================================================
 
 * Product Page: https://www.soft.ambro.dev
-* Copyright 2022 Ambro-Dev (https://www.ambro.dev)
+* Copyright 2023 Ambro-Dev (https://www.ambro.dev)
 
 Coded by Ambro-Dev
 
@@ -37,7 +37,7 @@ import theme from "assets/theme";
 import { useSoftUIController, setMiniSidenav, setOpenConfigurator } from "context";
 
 // Images
-import brand from "assets/images/logo-ct.png";
+import brand from "assets/images/logos/soft-logo.png";
 import Widgets from "layouts/widgets";
 import Wizard from "layouts/wizard";
 import Invoice from "layouts/invoice";
@@ -52,7 +52,6 @@ import RequireAuth from "components/RequireAuth";
 
 import routespl from "./routespl";
 import routesen from "./routesen";
-import routesru from "./routesru";
 import { useTranslation } from "react-i18next";
 import { SocketContext } from "context/socket";
 import { ROLES } from "./context/userRoles";
@@ -74,7 +73,7 @@ import EditUser from "layouts/admin-page/Users/components/EditUser";
 
 export default function App() {
   const { i18n } = useTranslation();
-  const [routes, setRoutes] = useState(routespl);
+  const [routes, setRoutes] = useState(routesen);
   const [controller, dispatch] = useSoftUIController();
   const { miniSidenav, direction, layout, openConfigurator, sidenavColor } = controller;
   const [onMouseEnter, setOnMouseEnter] = useState(false);
@@ -161,9 +160,6 @@ export default function App() {
       }
       if (i18n.language === "pl") {
         setRoutes(routespl);
-      }
-      if (i18n.language === "ru") {
-        setRoutes(routesru);
       }
     };
 

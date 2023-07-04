@@ -70,12 +70,22 @@ function OrderInfo({ courseId }) {
         </SoftBox>
       </Grid>
       <Grid item xs={12} md={6} sx={{ textAlign: "right" }}>
-        <SoftButton variant="gradient" color="dark" size="small" onClick={() => navigate("/profile/messages")}>
+        <SoftButton
+          variant="gradient"
+          color="dark"
+          size="small"
+          onClick={() => {
+            const messageUser = {
+              id: teacher._id,
+            };
+            navigate("/profile/messages", { state: messageUser });
+          }}
+        >
           {t("sendmessage")}
         </SoftButton>
         <SoftBox mt={0.5}>
           <SoftTypography variant="button" color="text">
-          {t("questions")}
+            {t("questions")}
           </SoftTypography>
         </SoftBox>
       </Grid>

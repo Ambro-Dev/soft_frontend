@@ -3,8 +3,8 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.Ambro-Dev.pl/product/soft-ui-dashboard-react
-* Copyright 2022 Ambro-Dev (https://www.Ambro-Dev.pl)
+* Product Page: https://www.ambro-dev.pl
+* Copyright 2023 Ambro-Dev (https://www.ambro-dev.pl)
 
 Coded by Ambro-Dev
 

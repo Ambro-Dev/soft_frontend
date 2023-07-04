@@ -13,9 +13,9 @@ import "survey-creator-core/survey-creator-core.css";
 import "./polishCreator";
 
 function FormCreatorRenderComponent({ saveSurvey, surveyJSON }) {
-  localization.currentLocale = "pl";
-  editorLocalization.defaultLocale = "pl";
-  surveyLocalization.defaultLocale = "pl";
+  localization.currentLocale = "en";
+  editorLocalization.defaultLocale = "en";
+  surveyLocalization.defaultLocale = "en";
   const options = {
     haveCommercialLicense: true,
     showState: true,
@@ -29,9 +29,9 @@ function FormCreatorRenderComponent({ saveSurvey, surveyJSON }) {
   const othersCategory = categories.splice(othersIndex, 1)[0];
   categories.push(othersCategory);
   creator.JSON = surveyJSON;
-  creator.locale = "pl";
+  creator.locale = "en";
 
-  surveyLocalization.supportedLocales = ["pl", "en", "ru"];
+  surveyLocalization.supportedLocales = ["pl", "en"];
 
   creator.toolbox.allowExpandMultipleCategories = true;
   creator.showSidebar = false;

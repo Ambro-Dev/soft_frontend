@@ -4,7 +4,7 @@
 =========================================================
 
 * Product Page: https://www.soft.ambro.dev
-* Copyright 2022 Ambro-Dev (https://www.ambro.dev)
+* Copyright 2023 Ambro-Dev (https://www.ambro.dev)
 
 Coded by Ambro-Dev
 
@@ -41,7 +41,7 @@ function IllustrationLayout({ color, header, title, description, illustration, c
         action={{
           type: "external",
           route: "https://github.com/Ambro-Dev/soft_frontend.git",
-          label: "buy now",
+          label: "visit github",
         }}
       />
       <Grid container>

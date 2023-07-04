@@ -51,7 +51,6 @@ function Address({
             <FormField
               type="date"
               label="Start date"
-              InputLabelProps={{ shrink: true }}
               required
               value={eventStartDate}
               onChange={(e) => {
@@ -67,7 +66,6 @@ function Address({
             <FormField
               type="time"
               label="Start time"
-              InputLabelProps={{ shrink: true }}
               required
               value={eventStartTime}
               onChange={(e) => {
@@ -83,7 +81,6 @@ function Address({
             <FormField
               type="date"
               label="End date"
-              InputLabelProps={{ shrink: true }}
               required
               value={eventEndDate}
               onChange={(e) => setEventEndDate(e.target.value)}
@@ -96,7 +93,6 @@ function Address({
             <FormField
               type="time"
               label="End time"
-              InputLabelProps={{ shrink: true }}
               required
               value={eventEndTime}
               onChange={(e) => {

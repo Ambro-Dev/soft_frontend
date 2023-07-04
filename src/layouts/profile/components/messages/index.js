@@ -29,6 +29,7 @@ import { useTranslation } from "react-i18next";
 import SoftAvatar from "components/SoftAvatar";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import ErrorContext from "context/ErrorProvider";
 
 // Connect to the Socket.io server
 
@@ -40,20 +41,44 @@ function Messages() {
   const { socket } = useContext(SocketContext);
   const { auth } = useAuth();
   const axiosPrivate = useAxiosPrivate();
-  const [query, setQuery] = useState();
+  const [addEmoji, setAddEmoji] = useState(false);
+  const [query, setQuery] = useState(null);
   const [usersList, setUsersList] = useState([]);
   const [conversationsList, setConversationsList] = useState([]);
   const [selectedConversation, setSelectedConversation] = useState(null);
-  const [messagesList, setMessagesList] = useState({});
+  const [messagesList, setMessagesList] = useState([]);
+  const { showErrorNotification, showInfoNotification } = useContext(ErrorContext);
   const [messageText, setMessageText] = useState("");
   const messagesContainerRef = useRef();
   const sendRef = useRef();
-  const [language, setLanguage] = useState("pl");
-  const [imageUrls, setImageUrls] = useState([]);
+  const [language, setLanguage] = useState("en");
   const [loading, setLoading] = useState(true);
+  const [imageUrls, setImageUrls] = useState([]);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const location = useLocation();
   const messageUser = location.state;
+
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+    setAddEmoji(!addEmoji);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleConversationSelect = (conversationId) => {
+    if (selectedConversation) {
+      socket.emit("leave-conversation", { conversation: selectedConversation });
+    }
+
+    setSelectedConversation(conversationId);
+    setMessagesList([]);
+    socket.emit("join-conversation", conversationId);
+  };
 
   const getImages = (list) => {
     const { CancelToken } = axios;
@@ -76,7 +101,6 @@ function Messages() {
         )
         .then((response) => URL.createObjectURL(response.data))
         .catch((error) => {
-          console.log(error);
           if (axios.isCancel(error)) {
             return () => {
               // cancel the request before component unmounts
@@ -138,7 +162,8 @@ function Messages() {
           } else {
             setConversationsList(response?.data);
             const userImages = response.data.map((row) => {
-              let otherUser = row.members.find((member) => member._id !== auth.userId);
+              let otherUser;
+              otherUser = row.members.find((member) => member._id !== auth.userId);
 
               if (!otherUser) otherUser = row.members[0];
               return axiosPrivate
@@ -192,7 +217,6 @@ function Messages() {
       });
   }, []);
 
-  // Listen for new messages
   useEffect(() => {
     socket.on("message", (message) => {
       setMessagesList((prevMessages) => [...prevMessages, message]);
@@ -206,35 +230,10 @@ function Messages() {
   }, []);
 
   useEffect(() => {
-    const handleLanguageChange = () => {
-      setLanguage(i18n.language);
-    };
-
-    i18n.on("languageChanged", handleLanguageChange);
-
-    return () => {
-      i18n.off("languageChanged", handleLanguageChange);
-    };
-  }, [i18n]);
-
-  useEffect(() => {
     if (messagesContainerRef.current) {
       messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
     }
   }, [messagesList]);
-
-  const handleConversationSelect = (conversationId) => {
-    if (selectedConversation) {
-      socket.emit("leave-conversation", { conversation: selectedConversation });
-    }
-
-    setSelectedConversation(conversationId);
-    setMessagesList([]);
-    socket.emit("join-conversation", conversationId);
-    setTimeout(() => {
-      sendRef.current.scrollIntoView({ behavior: "auto" });
-    }, 300);
-  };
 
   const handleSendMessage = async (event) => {
     event.preventDefault();
@@ -253,9 +252,13 @@ function Messages() {
       await socket.emit("send-message", newMessage);
       setMessageText("");
     } catch (err) {
-      console.error(err);
+      showErrorNotification("Error", err.message);
     }
   };
+
+  useEffect(() => {
+    setLanguage(i18n.language);
+  }, [i18n]);
 
   const renderProfiles = conversationsList?.map((row, index) => {
     // retrieve messages for conversation and sort by timestamp
@@ -290,7 +293,7 @@ function Messages() {
           justifyContent="center"
         >
           <SoftTypography variant="button" fontWeight="medium">
-            {otherUser?.name} {otherUser?.surname}
+            {otherUser.name} {otherUser.surname}
           </SoftTypography>
           <SoftTypography variant="caption" color="text">
             {shortenedDescription}
@@ -317,7 +320,11 @@ function Messages() {
                   <Autocomplete
                     disablePortal
                     options={usersList}
-                    getOptionLabel={(user) => `${user.name} ${user.surname} ${user.studentNumber}`}
+                    getOptionLabel={(user) =>
+                      `${user.name} ${user.surname} ${
+                        user.studentNumber ? `(${user.studentNumber})` : ""
+                      }`
+                    }
                     onChange={(event, value) => setQuery(value ? value._id : "")}
                     sx={{ width: 300 }}
                     renderInput={(params) => (
@@ -402,7 +409,7 @@ function Messages() {
                                 className="sender"
                                 fontWeight="medium"
                                 variant="caption"
-                              >{`${sender.name} ${sender.surname}`}</SoftTypography>
+                              >{`${sender?.name} ${sender?.surname}`}</SoftTypography>
                               <SoftTypography className="text" variant="button" color="text">
                                 {message.text}
                               </SoftTypography>

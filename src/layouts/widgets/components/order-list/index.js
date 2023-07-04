@@ -197,7 +197,15 @@ function OrderList({ courseId }) {
                       Header: [t("actions")],
                       accessor: "actions",
                       Cell: ({ row }) => (
-                        <SoftButton onClick={() => navigate("/profile/messages")}>
+                        <SoftButton
+                          onClick={() => {
+                            const messageUser = {
+                              id: row.original.id,
+                            };
+                            navigate("/profile/messages", { state: messageUser });
+                          }}
+                          disabled={row.original.id === auth.userId}
+                        >
                           {t("message")}
                         </SoftButton>
                       ),

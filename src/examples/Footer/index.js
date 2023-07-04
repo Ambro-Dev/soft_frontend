@@ -4,7 +4,7 @@
 =========================================================
 
 * Product Page: https://www.soft.ambro.dev
-* Copyright 2022 Ambro-Dev (https://www.ambro.dev)
+* Copyright 2023 Ambro-Dev (https://www.ambro.dev)
 
 Coded by Ambro-Dev
 
@@ -60,7 +60,7 @@ function Footer({ company, links }) {
         fontSize={size.sm}
         px={1.5}
       >
-        &copy; 2022, made with
+        &copy; 2023, made with
         <SoftBox fontSize={size.md} color="text" mb={-0.5} mx={0.25}>
           <Icon color="inherit" fontSize="inherit">
             favorite
@@ -101,8 +101,8 @@ function Footer({ company, links }) {
 Footer.defaultProps = {
   company: { href: "https://www.ambro.dev/", name: "Ambro-Dev" },
   links: [
-    { href: "https://www.ambro.dev/", name: "Ambro-Dev" },
-    { href: "https://www.ambro.dev", name: "Ambro-Dev" },
+    { href: "https://future.ambro.dev/", name: "Future" },
+    { href: "https://www.github.com/Ambro-Dev", name: "Github" },
   ],
 };
 

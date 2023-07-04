@@ -5,7 +5,7 @@
 =========================================================
 
 * Product Page: https://www.soft.ambro.dev
-* Copyright 2022 Ambro-Dev (https://www.ambro.dev)
+* Copyright 2023 Ambro-Dev (https://www.ambro.dev)
 
 Coded by Ambro-Dev
 
@@ -147,7 +147,11 @@ function Header({ stage }) {
                 sx={{ background: "transparent" }}
               >
                 <Tab label={t("profile")} icon={<Cube />} onClick={() => navigate("/profile")} />
-                <Tab label={t("messages")} icon={<Document />} onClick={() => navigate("/profile/messages")}/>
+                <Tab
+                  label={t("messages")}
+                  icon={<Document />}
+                  onClick={() => navigate("/profile/messages")}
+                />
                 <Tab
                   label={t("settings")}
                   icon={<Settings />}
