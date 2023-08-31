@@ -3,10 +3,10 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.Ambro-Dev.pl
-* Copyright 2023 Ambro-Dev (https://www.Ambro-Dev.pl)
+* Product Page: https://www.Gwarant-Service.pl
+* Copyright 2022 Gwarant-Service (https://www.Gwarant-Service.pl)
 
-Coded by Ambro-Dev
+Coded by Gwarant-Service
 
  =========================================================
 

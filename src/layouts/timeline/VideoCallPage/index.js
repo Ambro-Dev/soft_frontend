@@ -68,7 +68,7 @@ export default function VideoCallPage({ meetingId }) {
 
       branding: {
         enabled: true,
-        logoURL: "https://ambro.dev/wp-content/uploads/2022/03/logo-mans-www.png",
+        logoURL: "https://gwarant-service.pl/wp-content/uploads/2022/03/logo-mans-www.png",
         name: "Soft UD",
         poweredBy: false,
       },
@@ -99,8 +99,8 @@ export default function VideoCallPage({ meetingId }) {
         // visible when redirect on leave not provieded
         actionButton: {
           // optional action button
-          label: "Ambro-Dev", // action button label
-          href: "https://ambro.dev/", // action button href
+          label: "Gwarant-Service", // action button label
+          href: "https://gwarant-service.pl/", // action button href
           onClick: () => {
             // Close the current tab/window
             window.close();

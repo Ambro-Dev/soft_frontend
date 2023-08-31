@@ -3,7 +3,7 @@
 * Distance Learning React - v1.1.0
 =========================================================
 
-Coded by Ambro-Dev
+Coded by Gwarant-Service
 
 */
 
@@ -20,12 +20,7 @@ import { useTranslation } from "react-i18next";
 
 function ChangePassword() {
   const { t } = useTranslation("translation", { keyPrefix: "settings" });
-  const passwordRequirements = [
-    [t("passreq1")],
-    [t("passreq2")],
-    [t("passreq3")],
-    [t("passreq4")],
-  ];
+  const passwordRequirements = [[t("passreq1")], [t("passreq2")], [t("passreq3")], [t("passreq4")]];
 
   const renderPasswordRequirements = passwordRequirements.map((item, key) => {
     const itemKey = `element-${key}`;
@@ -47,7 +42,7 @@ function ChangePassword() {
       <SoftBox component="form" pb={3} px={3}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
-          <SoftTypography component="label" variant="caption" fontWeight="bold">
+            <SoftTypography component="label" variant="caption" fontWeight="bold">
               {t("currpass")}
             </SoftTypography>
             <SoftInput
@@ -57,7 +52,7 @@ function ChangePassword() {
             />
           </Grid>
           <Grid item xs={12}>
-          <SoftTypography component="label" variant="caption" fontWeight="bold">
+            <SoftTypography component="label" variant="caption" fontWeight="bold">
               {t("newpass")}
             </SoftTypography>
             <SoftInput
@@ -67,7 +62,7 @@ function ChangePassword() {
             />
           </Grid>
           <Grid item xs={12}>
-          <SoftTypography component="label" variant="caption" fontWeight="bold">
+            <SoftTypography component="label" variant="caption" fontWeight="bold">
               {t("confpass")}
             </SoftTypography>
             <SoftInput
@@ -85,7 +80,12 @@ function ChangePassword() {
             {t("pleasefollow")}
           </SoftTypography>
         </SoftBox>
-        <SoftBox display="flex" justifyContent="space-between" alignItems="flex-end" flexWrap="wrap">
+        <SoftBox
+          display="flex"
+          justifyContent="space-between"
+          alignItems="flex-end"
+          flexWrap="wrap"
+        >
           <SoftBox component="ul" m={0} pl={3.25} mb={{ xs: 8, sm: 0 }}>
             {renderPasswordRequirements}
           </SoftBox>

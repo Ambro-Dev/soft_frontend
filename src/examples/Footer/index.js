@@ -3,10 +3,10 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.soft.ambro.dev
-* Copyright 2023 Ambro-Dev (https://www.ambro.dev)
+* Product Page: https://www.soft.gwarant-service.pl
+* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
 
-Coded by Ambro-Dev
+Coded by Gwarant-Service
 
  =========================================================
 
@@ -60,7 +60,7 @@ function Footer({ company, links }) {
         fontSize={size.sm}
         px={1.5}
       >
-        &copy; 2023, made with
+        &copy; 2022, made with
         <SoftBox fontSize={size.md} color="text" mb={-0.5} mx={0.25}>
           <Icon color="inherit" fontSize="inherit">
             favorite
@@ -99,10 +99,10 @@ function Footer({ company, links }) {
 
 // Setting default values for the props of Footer
 Footer.defaultProps = {
-  company: { href: "https://www.ambro.dev/", name: "Ambro-Dev" },
+  company: { href: "https://www.gwarant-service.pl/", name: "Gwarant-Service" },
   links: [
-    { href: "https://future.ambro.dev/", name: "Future" },
-    { href: "https://www.github.com/Ambro-Dev", name: "Github" },
+    { href: "https://future.gwarant-service.pl/", name: "Future" },
+    { href: "https://www.github.com/Gwarant-Service", name: "Github" },
   ],
 };
 

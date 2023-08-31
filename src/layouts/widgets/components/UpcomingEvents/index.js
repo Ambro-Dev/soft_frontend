@@ -5,7 +5,7 @@
 * Distance Learning React - v1.1.0
 =========================================================
 
-Coded by Ambro-Dev
+Coded by Gwarant-Service
 
 */
 
@@ -40,7 +40,7 @@ function UpcomingEvents({ events, courseId }) {
 
     navigate("/applications/wizard", { state: course });
   };
-  
+
   useEffect(() => {
     const handleLanguageChange = () => {
       setLanguage(i18n.language);

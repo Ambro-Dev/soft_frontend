@@ -3,7 +3,7 @@
 * Distance Learning React - v1.1.0
 =========================================================
 
-Coded by Ambro-Dev
+Coded by Gwarant-Service
 
 */
 
@@ -16,10 +16,7 @@ import Icon from "@mui/material/Icon";
 // Distance Learning React components
 import SoftBox from "components/SoftBox";
 
-
 function DataTableHeadCell({ width, children, sorted, align, ...rest }) {
-
-
   return (
     <SoftBox
       component="th"

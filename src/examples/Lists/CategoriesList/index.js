@@ -3,7 +3,7 @@
 * Distance Learning React - v1.1.0
 =========================================================
 
-Coded by Ambro-Dev
+Coded by Gwarant-Service
 
 */
 
@@ -51,7 +51,12 @@ function CategoriesList({ title, categories }) {
           variant="gradient"
           fontSize="0.875rem"
         >
-          <SoftAvatar src={`${serverUrl}/${image}`} variant="rounded" alt={name} sx={{ width: 132, height: 81 }} />
+          <SoftAvatar
+            src={`${serverUrl}/${image}`}
+            variant="rounded"
+            alt={name}
+            sx={{ width: 132, height: 81 }}
+          />
         </SoftBox>
         <SoftBox display="flex" flexDirection="column">
           <SoftTypography variant="button" color={color} fontWeight="medium" gutterBottom>

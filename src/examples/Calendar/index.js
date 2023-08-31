@@ -3,7 +3,7 @@
 * Distance Learning React - v1.1.0
 =========================================================
 
-Coded by Ambro-Dev
+Coded by Gwarant-Service
 
 */
 
@@ -27,7 +27,6 @@ import SoftTypography from "components/SoftTypography";
 import CalendarRoot from "examples/Calendar/CalendarRoot";
 
 function Calendar({ header, ...rest }) {
-
   const validClassNames = [
     "primary",
     "secondary",

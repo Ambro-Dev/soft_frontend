@@ -3,10 +3,10 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.soft.ambro.dev
-* Copyright 2023 Ambro-Dev (https://www.ambro.dev)
+* Product Page: https://www.soft.gwarant-service.pl
+* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
 
-Coded by Ambro-Dev
+Coded by Gwarant-Service
 
  =========================================================
 
@@ -36,18 +36,18 @@ function Footer() {
             <SoftBox mr={{ xs: 2, lg: 3, xl: 6 }}>
               <SoftTypography
                 component="a"
-                href="https://ambro.dev"
+                href="https://gwarant-service.pl"
                 target="_blank"
                 variant="body2"
                 color="secondary"
               >
-                Ambro-Dev
+                Gwarant-Service
               </SoftTypography>
             </SoftBox>
             <SoftBox mr={{ xs: 2, lg: 3, xl: 6 }}>
               <SoftTypography
                 component="a"
-                href="https://github.com/Ambro-Dev"
+                href="https://github.com/Gwarant-Service"
                 target="_blank"
                 variant="body2"
                 color="secondary"
@@ -78,7 +78,7 @@ function Footer() {
         </Grid>
         <Grid item xs={12} lg={8} sx={{ textAlign: "center" }}>
           <SoftTypography variant="body2" color="secondary">
-            Copyright &copy; 2023 Soft by Ambro-Dev.
+            Copyright &copy; 2022 Soft by Gwarant-Service.
           </SoftTypography>
         </Grid>
       </Grid>

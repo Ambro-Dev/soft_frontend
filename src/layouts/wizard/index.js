@@ -4,7 +4,7 @@
 * Distance Learning React - v1.1.0
 =========================================================
 
-Coded by Ambro-Dev
+Coded by Gwarant-Service
 
 */
 
@@ -209,7 +209,7 @@ function Wizard() {
                   </SoftTypography>
                 </SoftBox>
                 <SoftTypography variant="h5" fontWeight="regular" color="secondary">
-                {t("info")}
+                  {t("info")}
                 </SoftTypography>
               </SoftBox>
               <Card>

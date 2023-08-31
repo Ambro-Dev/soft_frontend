@@ -33,7 +33,7 @@ function FooterAdmin({ light }) {
             color={light ? "white" : "text"}
             fontSize={size.sm}
           >
-            &copy; 2023, made by Ambro-Dev
+            &copy; 2022, made by Gwarant-Service
           </SoftBox>
           <SoftBox
             component="ul"
@@ -53,18 +53,18 @@ function FooterAdmin({ light }) {
             })}
           >
             <SoftBox component="li" pr={2} lineHeight={1}>
-              <Link href="https://ambro.dev/" target="_blank">
+              <Link href="https://gwarant-service.pl/" target="_blank">
                 <SoftTypography
                   variant="button"
                   fontWeight="regular"
                   color={light ? "white" : "dark"}
                 >
-                  Ambro-Dev
+                  Gwarant-Service
                 </SoftTypography>
               </Link>
             </SoftBox>
             <SoftBox component="li" px={2} lineHeight={1}>
-              <Link href="https://ambro.dev/" target="_blank">
+              <Link href="https://gwarant-service.pl/" target="_blank">
                 <SoftTypography
                   variant="button"
                   fontWeight="regular"
@@ -75,7 +75,7 @@ function FooterAdmin({ light }) {
               </Link>
             </SoftBox>
             <SoftBox component="li" px={2} lineHeight={1}>
-              <Link href="https://ambro.dev/" target="_blank">
+              <Link href="https://gwarant-service.pl/" target="_blank">
                 <SoftTypography
                   variant="button"
                   fontWeight="regular"
@@ -86,7 +86,7 @@ function FooterAdmin({ light }) {
               </Link>
             </SoftBox>
             <SoftBox component="li" pl={2} lineHeight={1}>
-              <Link href="https://ambro.dev/" target="_blank">
+              <Link href="https://gwarant-service.pl/" target="_blank">
                 <SoftTypography
                   variant="button"
                   fontWeight="regular"

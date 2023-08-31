@@ -4,9 +4,9 @@
 =========================================================
 
 * Product Page: https://www.ambro-dev.pl
-* Copyright 2023 Ambro-Dev (https://www.ambro-dev.pl)
+* Copyright 2022 Gwarant-Service (https://www.ambro-dev.pl)
 
-Coded by Ambro-Dev
+Coded by Gwarant-Service
 
  =========================================================
 

@@ -3,7 +3,7 @@
 * Distance Learning React - v1.1.0
 =========================================================
 
-Coded by Ambro-Dev
+Coded by Gwarant-Service
 
 */
 
@@ -87,7 +87,7 @@ function Account({ setClassName }) {
                 <Icon sx={{ color: design ? "white" : "inherit" }}>video_call</Icon>
               </SoftButton>
               <SoftTypography variant="h6" sx={{ mt: 1 }}>
-              {t("videolesson")}
+                {t("videolesson")}
               </SoftTypography>
             </SoftBox>
           </Grid>
@@ -102,7 +102,7 @@ function Account({ setClassName }) {
                 <Icon sx={{ color: code ? "white" : "inherit" }}>grading</Icon>
               </SoftButton>
               <SoftTypography variant="h6" sx={{ mt: 1 }}>
-              {t("exam")}
+                {t("exam")}
               </SoftTypography>
             </SoftBox>
           </Grid>

@@ -5,7 +5,7 @@
 * Distance Learning React - v1.1.0
 =========================================================
 
-Coded by Ambro-Dev
+Coded by Gwarant-Service
 
 */
 
@@ -112,16 +112,16 @@ function Courses() {
                       {t("save")}
                     </SoftButton>
                     <SoftButton color="error" circular onClick={handleClose} sx={{ ml: 1 }}>
-                    {t("cancel")}
+                      {t("cancel")}
                     </SoftButton>
                   </>
                 ) : (
                   <>
                     <SoftButton color="success" circular onClick={handleSave}>
-                    {t("save")}
+                      {t("save")}
                     </SoftButton>
                     <SoftButton color="error" circular onClick={handleClose} sx={{ ml: 1 }}>
-                    {t("cancel")}
+                      {t("cancel")}
                     </SoftButton>
                   </>
                 )}

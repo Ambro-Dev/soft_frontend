@@ -4,10 +4,10 @@
 * Distance Learning React TS - v1.0.0
 =========================================================
 
-* Product Page: https://ambro.dev/product/material-dashboard-2-pro-react-ts
-* Copyright 2023 Ambro-Dev (https://www.ambro-dev.com)
+* Product Page: https://gwarant-service.pl/product/material-dashboard-2-pro-react-ts
+* Copyright 2022 Gwarant-Service (https://www.ambro-dev.com)
 
-Coded by Ambro-Dev
+Coded by Gwarant-Service
 
  =========================================================
 

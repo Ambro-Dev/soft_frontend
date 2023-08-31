@@ -3,7 +3,7 @@
 * Distance Learning React - v1.1.0
 =========================================================
 
-Coded by Ambro-Dev
+Coded by Gwarant-Service
 
 */
 // react-quill components
@@ -16,8 +16,6 @@ import "react-quill/dist/quill.snow.css";
 import SoftEditorRoot from "components/SoftEditor/SoftEditorRoot";
 
 function MDEditor(props) {
-
-
   return (
     <SoftEditorRoot>
       <ReactQuill theme="snow" {...props} />

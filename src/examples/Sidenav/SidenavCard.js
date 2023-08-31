@@ -3,10 +3,10 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.soft.ambro.dev
-* Copyright 2023 Ambro-Dev (https://www.ambro.dev)
+* Product Page: https://www.soft.gwarant-service.pl
+* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
 
-Coded by Ambro-Dev
+Coded by Gwarant-Service
 
  =========================================================
 
@@ -58,14 +58,14 @@ function SidenavCard() {
           </SoftBox>
           <SoftButton
             component={Link}
-            href="https://www.ambro.dev/"
+            href="https://www.gwarant-service.pl/"
             target="_blank"
             rel="noreferrer"
             size="small"
             color="white"
             fullWidth
           >
-            Ambro-Dev
+            Gwarant-Service
           </SoftButton>
         </SoftBox>
       </CardContent>

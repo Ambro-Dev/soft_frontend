@@ -4,7 +4,7 @@
 * Distance Learning React - v1.1.0
 =========================================================
 
-Coded by Ambro-Dev
+Coded by Gwarant-Service
 
 */
 
@@ -16,7 +16,6 @@ import Card from "@mui/material/Card";
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import SoftButton from "components/SoftButton";
-
 
 // Distance Learning React context
 import AttachFileIcon from "@mui/icons-material/AttachFile";
@@ -129,7 +128,7 @@ function Invoice() {
                                 </SoftButton>
                               )}
                               <SoftButton variant="gradient" color="error" sx={{ ml: 1 }}>
-                              {t("delete")}
+                                {t("delete")}
                               </SoftButton>
                             </>
                           ) : (
@@ -172,11 +171,7 @@ function Invoice() {
                 <SoftBox mt={{ xs: 5, md: 10 }}>
                   <Grid container justifyContent="space-between">
                     <Grid item xs={12} md={4}>
-                      <SoftTypography
-                        variant="h6"
-                        color="secondary"
-                        fontWeight="regular"
-                      >
+                      <SoftTypography variant="h6" color="secondary" fontWeight="regular">
                         {t("title")}
                       </SoftTypography>
                       <SoftTypography variant="h5" fontWeight="medium">
@@ -193,11 +188,7 @@ function Invoice() {
                         mt={{ xs: 3, md: 0 }}
                       >
                         <SoftBox width="50%">
-                          <SoftTypography
-                            variant="h6"
-                            color="secondary"
-                            fontWeight="regular"
-                          >
+                          <SoftTypography variant="h6" color="secondary" fontWeight="regular">
                             {t("start")}
                           </SoftTypography>
                         </SoftBox>
@@ -215,11 +206,7 @@ function Invoice() {
                         textAlign={{ xs: "left", md: "right" }}
                       >
                         <SoftBox width="50%">
-                          <SoftTypography
-                            variant="h6"
-                            color="secondary"
-                            fontWeight="regular"
-                          >
+                          <SoftTypography variant="h6" color="secondary" fontWeight="regular">
                             {t("end")}
                           </SoftTypography>
                         </SoftBox>
@@ -237,11 +224,7 @@ function Invoice() {
               {/* Invoice table */}
               <SoftBox p={3}>
                 <SoftBox width="100%" overflow="auto">
-                  <SoftTypography
-                    variant="h6"
-                    color="secondary"
-                    fontWeight="regular"
-                  >
+                  <SoftTypography variant="h6" color="secondary" fontWeight="regular">
                     {t("description")}
                   </SoftTypography>
                   <Divider variant="middle" />
@@ -257,7 +240,7 @@ function Invoice() {
                   <Grid item xs={12} lg={5}>
                     <Divider variant="middle" />
                     <SoftTypography variant="h6" fontWeight="regular">
-                    {t("files")}
+                      {t("files")}
                     </SoftTypography>
                     <SoftBox mt={1} mb={2} lineHeight={0}>
                       <AttachFileIcon fontSize="large" />
@@ -273,7 +256,7 @@ function Invoice() {
                       mt={{ xs: 2, md: 0 }}
                     >
                       <SoftButton variant="gradient" color="warning" onClick={handleClick}>
-                      {t("close")}
+                        {t("close")}
                       </SoftButton>
                     </SoftBox>
                   </Grid>

@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2018-2021 Ambro-Dev (https://www.ambro.dev)
+Copyright (c) 2018-2021 Gwarant-Service (https://www.gwarant-service.pl)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

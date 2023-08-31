@@ -3,10 +3,10 @@
 * Soft UD - Demo - v4.0.0
 =========================================================
 
-* Product Page: https://www.soft.ambro.dev
-* Copyright 2023 Ambro-Dev (https://www.ambro.dev)
+* Product Page: https://www.soft.gwarant-service.pl
+* Copyright 2022 Gwarant-Service (https://www.gwarant-service.pl)
 
-Coded by Ambro-Dev
+Coded by Gwarant-Service
 
  =========================================================
 
@@ -40,7 +40,7 @@ function IllustrationLayout({ color, header, title, description, illustration, c
         routes={pageRoutes}
         action={{
           type: "external",
-          route: "https://github.com/Ambro-Dev/soft_frontend.git",
+          route: "https://github.com/Gwarant-Service/soft_frontend.git",
           label: "visit github",
         }}
       />
